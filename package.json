@@ -1,0 +1,23 @@
+{
+  "name": "kmcollaborator-back-end",
+  "version": "1.0.0",
+  "description": "tcc",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --env node --unhandled-rejections=strict --detectOpenHandles",
+    "dev": "nodemn server.js",
+    "start": "nodemon  server/server.js",
+    "startd": "nodemon --inspect server/server.js"
+  },
+  "author": "Elielson Santos",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "jest": "^27.0.6",
+    "nodemon": "^2.0.12",
+    "pg-promise": "^10.10.2"
+  }
+}
