@@ -5,7 +5,7 @@ const answerData = require('../data/answerData')
 
 const generate = () => crypto.randomBytes(20).toString('hex')
 const request =  function(url,method,data){  return axios({url,method,data})};
-test('Should get Questions',async function(){
+test.only('Should get Questions',async function(){
     //given - dado que 
     const question2 = await questionsService.saveQuestion({conteudo:generate(),tipo_resposta:'C',id_responsavel:1,senioridade:'J',id_departamento:1,nivel:'F'})    //when - quando acontecer
     const response = await request('http://localhost:3001/questions','get')
