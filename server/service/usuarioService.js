@@ -20,9 +20,6 @@ exports.putUsuario = async function (id_usuario, usuario) {
 
      await usuarioData.putUsuario(id_usuario, usuario);
      return'ok'
-
-
-
 }
 
 exports.deletUsuario = async function (id) {
@@ -30,9 +27,7 @@ exports.deletUsuario = async function (id) {
 };
 
 exports.existeEmailLogin = async function ({ login, email,id_usuario}) {
-    
     const TABELA = await usuarioData.getEmailLogin(email, login,id_usuario)
-    console.log(await TABELA.length !== 0)
     return TABELA.length !== 0
 
 }
