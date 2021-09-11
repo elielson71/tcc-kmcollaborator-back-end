@@ -11,7 +11,6 @@ exports.getQuestionAnswer = async (id_perguntas) => {
     return await answerData.getAnswer(id_perguntas)
 }
 exports.saveQuestion = async function (question) {
-
     const newquestion = await questionsData.saveQuestion(question);
     if (newquestion && question.answers) {
         Object.values(question.answers).forEach(async function (value, key) {
@@ -19,7 +18,7 @@ exports.saveQuestion = async function (question) {
             answser['descricao'] = value.descricao
             answser['id_perguntas'] = newquestion.id_perguntas
             answser['correta'] = (value.correta === undefined ? 'N' : value.correta)
-            await answerData.saveQuestionAnswer(answser);
+            await answerData.saveAnswer(answser);
         })
     }
 
