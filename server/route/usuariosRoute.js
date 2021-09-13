@@ -28,8 +28,19 @@ router.post('/usuario', async function (req, res) {
         const newUsuario = await usuarioService.saveUsuario(usuario)
         res.status(201).json(newUsuario)
     }
-
-
+})
+router.post('/authenticate', async function (req, res) {
+    const user = req.body;
+    try {
+        const token = await usuarioService.getAuthenticate(user)
+        res.status(200).send('ok')
+    } catch (e) {
+        if (e.message === 'Usuario não Encontrado') {
+            res.status(404).send('Usuario não Encontrado')
+        } else if (e.message === 'Login e senha não confere') {
+            res.status(401).send('Login e senha não confere')
+        }
+    }
 })
 
 router.put('/usuario/:id', async function (req, res) {

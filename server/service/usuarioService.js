@@ -1,6 +1,6 @@
 // camada responsavel pelas regras de negocio
 const usuarioData = require('../data/usuarioData.js')
-
+const bcrypt = require('bcrypt')
 
 exports.getUsuario = () => usuarioData.getUsuario();
 exports.getOneUsuario = async (id_usuario) => {
@@ -12,9 +12,19 @@ exports.getOneUsuario = async (id_usuario) => {
 exports.saveUsuario = async function (usuario) {
     const newUsuario = await usuarioData.saveUsuario(usuario);
     return newUsuario;
-
-
 }
+exports.getAuthenticate = async function (usuario) {
+    const {login,senha} = usuario
+    const user = await usuarioData.getAuthenticate(login)
+    console.log(user)
+    if(user.length===0)throw new Error('Usuario não Encontrado')
+    if(!await bcrypt.compare(senha,user[0].senha)) throw new Error('Login e senha não confere')
+
+
+    return user
+        
+}
+
 
 exports.putUsuario = async function (id_usuario, usuario) {
 

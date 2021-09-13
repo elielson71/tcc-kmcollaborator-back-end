@@ -13,6 +13,10 @@ router.get('/avaliacoes/:id', async function(req,res){
     const avaliacoes = await avaliacoesService.getOneAvaliacoes(req.params.id)
     res.json(avaliacoes)
 })
+router.get('/avaliacoes/itensquestions/:id', async function(req,res){
+    const questions = await avaliacoesService.getAvaliacoesItenQuestions(req.params.id)
+    res.json(questions)
+})
 router.get('/avaliacoes/questions/:id', async function(req,res){
     const questions = await avaliacoesService.getAvaliacoesQuestions(req.params.id)
     res.json(questions)

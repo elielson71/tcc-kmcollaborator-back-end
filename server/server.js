@@ -12,4 +12,5 @@ app.use(express.json());
 app.use('/',require('./route/questionsRoute'))
 app.use('/',require('./route/avaliacaoRoute'))
 app.use('/',require('./route/usuariosRoute'))
+app.use('/',require('./route/departamentoRoute'))
 app.listen(3001)

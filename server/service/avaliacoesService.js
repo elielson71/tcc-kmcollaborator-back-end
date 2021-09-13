@@ -7,6 +7,9 @@ exports.getAvaliacoes = () => avaliacoesData.getAvaliacoes();
 exports.getOneAvaliacoes = async (id_perguntas) => {
     return await avaliacoesData.getOneAvaliacoes(id_perguntas)
 }
+exports.getAvaliacoesItenQuestions = async (id_perguntas) => {
+    return await avaliacoesData.getAvaliacoesItenQuestions(id_perguntas)
+}
 exports.getAvaliacoesQuestions = async (id_perguntas) => {
      const resp = {}
     const avaliacao = await avaliacoesData.getOneAvaliacoes(id_perguntas)

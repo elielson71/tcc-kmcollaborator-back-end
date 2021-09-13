@@ -5,15 +5,35 @@ exports.getAvaliacoes = function(){
     return database.query('select id_avaliacoes,titulo from avaliacoes ') // where=status='C'
 }
 exports.getOneAvaliacoes = function(id_avaliacoes){
-    return database.query(`select id_avaliacoes,titulo,tempo from avaliacoes where id_avaliacoes=${id_avaliacoes}`)
+    return database.query(`select id_avaliacoes,titulo,tempo,id_departamento from avaliacoes where id_avaliacoes=${id_avaliacoes}`)
+}
+exports.getAvaliacoesItenQuestions = function(id_avaliacoes){
+    return database.query(`SELECT 
+    public.perguntas.conteudo,
+    public.perguntas.id_perguntas,
+    public.perguntas.tipo_resposta,
+    public.perguntas.status,
+    public.perguntas.id_responsavel,
+    public.perguntas.senioridade,
+    public.perguntas.nivel,
+    public.departamento.id_departamento,
+    public.departamento.nome AS descricao_depart
+  FROM
+    public.itens_avaliacoes
+    INNER JOIN public.perguntas ON (public.itens_avaliacoes.id_perguntas = public.perguntas.id_perguntas)
+    INNER JOIN public.departamento ON (public.perguntas.id_departamento = public.departamento.id_departamento)
+  WHERE
+    id_avaliacoes =${id_avaliacoes} and situacao='AB'`)
 }
 exports.getAvaliacoesQuestions = function(id_avaliacoes){
+  
     return database.query(`SELECT 
     public.perguntas.id_perguntas,
     public.perguntas.conteudo,
     public.perguntas.tipo_resposta,
     public.perguntas.status,
     public.perguntas.id_responsavel,
+    public.perguntas.id_departamento,
     public.perguntas.senioridade,
     CASE 
       WHEN public.itens_avaliacoes.id_avaliacoes = ${id_avaliacoes} and public.itens_avaliacoes.situacao='AB'
@@ -42,6 +62,7 @@ exports.getAvaliacoesQuestions = function(id_avaliacoes){
     public.perguntas.tipo_resposta,
     public.perguntas.status,
     public.perguntas.id_responsavel,
+    public.perguntas.id_departamento,
     public.perguntas.senioridade,
     CASE 
       WHEN public.itens_avaliacoes.id_avaliacoes = ${id_avaliacoes} and public.itens_avaliacoes.situacao='AB'
@@ -62,12 +83,12 @@ exports.getAvaliacoesQuestions = function(id_avaliacoes){
 }
 
 exports.saveAvaliacoes = function (avaliacoes){
-    return database.one('INSERT INTO avaliacoes ( titulo,tempo,id_usuario) VALUES($1,$2,$3) returning *',
-    [avaliacoes.titulo,(avaliacoes.tempo),avaliacoes.id_usuario])
+    return database.one('INSERT INTO avaliacoes ( titulo,tempo,id_usuario,id_departamento) VALUES($1,$2,$3,$4) returning *',
+    [avaliacoes.titulo,(avaliacoes.tempo),1,avaliacoes.id_departamento])
 }
 exports.putAvaliacoes = function (id,avaliacoes){
-    return database.none('UPDATE avaliacoes SET id_avaliacoes=$1, titulo=$2, tempo=$3 where id_avaliacoes=$4',
-    [avaliacoes.id_avaliacoes,avaliacoes.titulo,avaliacoes.tempo,id])
+    return database.none('UPDATE avaliacoes SET id_avaliacoes=$1, titulo=$2, tempo=$3, id_departamento=$4 where id_avaliacoes=$5',
+    [avaliacoes.id_avaliacoes,avaliacoes.titulo,avaliacoes.tempo,id_departamento,id])
 }
 exports.putAvaliacoesitensAvaliacoes = function (itensAvaliacoes){
     return database.none('UPDATE itens_avaliacoes SET nota_pergunta=$1, situacao=$2'+

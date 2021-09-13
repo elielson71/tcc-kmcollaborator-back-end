@@ -5,6 +5,9 @@ const bcrypt = require('bcrypt')
 exports.getUsuario = function(){
     return database.query('select id_usuario,login,senha,nome_completo,email,administrador,data_cadastro from usuario ') // where=status='C'
 }
+exports.getAuthenticate = function (login){
+    return database.query(`select id_usuario,login,senha from usuario where login='${login}'`)
+}
 exports.getOneUsuario = function(id_usuario){
     return database.query(`select id_usuario,login,senha,nome_completo,email,administrador,data_cadastro from usuario where id_usuario=${id_usuario}`)
 }
@@ -20,6 +23,7 @@ exports.putUsuario = function (id,usuario){
     return database.none('UPDATE usuario SET login=$1,senha=$2,nome_completo=$3,email=$4,administrador=$5 where id_usuario=$6',
     [usuario.login,criptografa(usuario.senha),usuario.nome_completo,usuario.email,usuario.administrador,id])
 }
+
  exports.deleteUsuario = async function(id){
     return  await database.none('DELETE FROM usuario WHERE id_usuario=$1',[id]);
 }
