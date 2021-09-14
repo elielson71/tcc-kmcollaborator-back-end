@@ -1,8 +1,11 @@
 // camada responsavel por rotear recebendo as requisições
 const express = require('express');
+const authMiddleware = require('../middleware/auth')
 const router = express.Router();
+router.use(authMiddleware)
 const avaliacoesService = require('../service/avaliacoesService')
-const itensAvaliacoesService = require('../service/itensAvaliacoesService')
+const itensAvaliacoesService = require('../service/itensAvaliacoesService');
+const { Router } = require('express');
 
 router.get('/avaliacoes', async function(req,res){
     const avaliacoes = await avaliacoesService.getAvaliacoes();

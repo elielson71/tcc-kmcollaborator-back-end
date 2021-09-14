@@ -6,7 +6,7 @@ exports.getUsuario = function(){
     return database.query('select id_usuario,login,senha,nome_completo,email,administrador,data_cadastro from usuario ') // where=status='C'
 }
 exports.getAuthenticate = async function (login){
-    return database.query(`select id_usuario,login,senha from usuario where login='${login}'`)
+    return database.query(`select id_usuario,login,senha,administrador from usuario where login='${login}'`)
     
 }
 exports.getOneUsuario = function(id_usuario){

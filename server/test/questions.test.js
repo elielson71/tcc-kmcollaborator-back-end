@@ -114,9 +114,9 @@ test('Should login password Invalid',async function(){
     expect(401).toBe(respUsuario.status)
     console.log(respUsuario.data)
 })
-test('Should sucess login',async function(){
+test.only('Should sucess login',async function(){
     //given -
-    const user= {login:'eli',senha:'9804',nome_completo:generate(),email:generate(),administrador:'N'}
+    const user= {login:generate(),senha:'9804',nome_completo:generate(),email:generate(),administrador:'N'}
     const newuser = usuarioService.saveUsuario(user)
     const logar  = user
      //when - quando acontecer
@@ -128,18 +128,5 @@ test('Should sucess login',async function(){
 
     await usuarioService.deletUsuario(newuser.id_usuario)
 })
-test.only('Should milddawere login',async function(){
-    //given -
-    const user= {login:'eli',senha:'9804',nome_completo:generate(),email:generate(),administrador:'N'}
-    const newuser = usuarioService.saveUsuario(user)
-    const logar  = user
-     //when - quando acontecer
-    const respUsuario = await request(`http://localhost:3001/authenticate`,'post',logar,'qual')
-    
-    // then - então
-    expect(200).toBe(respUsuario.status)
-    console.log(respUsuario.data)
 
-    await usuarioService.deletUsuario(newuser.id_usuario)
-})
 

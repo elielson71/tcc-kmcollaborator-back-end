@@ -20,9 +20,7 @@ exports.saveUsuario = async function (usuario) {
 }
 exports.getAuthenticate = async function (usuario) {
     const {login,senha} = usuario
-    console.log(login +"  "+senha)
     const user = await usuarioData.getAuthenticate(login)
-    console.log(user)
     if(user.length===0)throw new Error('Usuario não Encontrado')
     if(!await bcrypt.compare(senha,user[0].senha)) throw new Error('Login e senha não confere')
 
@@ -31,7 +29,7 @@ exports.getAuthenticate = async function (usuario) {
     const token = jwt.sign({id:user[0].id_usuario},authConfig.secret,{
         expiresIn: 86400
     })
-    return {"user":user,"token":token}
+    return {"login":user[0].login,"id_usuario":user[0].id_usuario,"tipo":user[0].administrador,"token":token,}
         
 }
 

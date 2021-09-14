@@ -13,6 +13,7 @@ router.get('/usuario', async function (req, res) {
 router.get('/usuario/:id', async function (req, res) {
     try {
         const usuario = await usuarioService.getOneUsuario(req.params.id)
+        res.cookie(usuario.token,{httpOnly:true})
         res.status(200).json(usuario)
     } catch (e) {
         res.status(404).send(e.message)

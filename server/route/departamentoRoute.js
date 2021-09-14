@@ -1,7 +1,9 @@
 // camada responsavel por rotear recebendo as requisições
 const { response } = require('express');
 const express = require('express');
+const authMiddleware = require('../middleware/auth')
 const router = express.Router();
+router.use(authMiddleware)
 const departamentoService = require('../service/departamentoService.js')
 
 
