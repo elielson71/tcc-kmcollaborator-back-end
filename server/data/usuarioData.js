@@ -5,8 +5,9 @@ const bcrypt = require('bcrypt')
 exports.getUsuario = function(){
     return database.query('select id_usuario,login,senha,nome_completo,email,administrador,data_cadastro from usuario ') // where=status='C'
 }
-exports.getAuthenticate = function (login){
+exports.getAuthenticate = async function (login){
     return database.query(`select id_usuario,login,senha from usuario where login='${login}'`)
+    
 }
 exports.getOneUsuario = function(id_usuario){
     return database.query(`select id_usuario,login,senha,nome_completo,email,administrador,data_cadastro from usuario where id_usuario=${id_usuario}`)

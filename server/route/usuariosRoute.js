@@ -1,5 +1,5 @@
 // camada responsavel por rotear recebendo as requisições
-const { response } = require('express');
+
 const express = require('express');
 const router = express.Router();
 const usuarioService = require('../service/usuarioService')
@@ -32,8 +32,8 @@ router.post('/usuario', async function (req, res) {
 router.post('/authenticate', async function (req, res) {
     const user = req.body;
     try {
-        const token = await usuarioService.getAuthenticate(user)
-        res.status(200).send('ok')
+        const resp = await usuarioService.getAuthenticate(user)
+        res.status(200).send(resp)
     } catch (e) {
         if (e.message === 'Usuario não Encontrado') {
             res.status(404).send('Usuario não Encontrado')

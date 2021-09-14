@@ -1,10 +1,10 @@
 const axios = require('axios');
 const crypto = require('crypto')
 const questionsService = require('../service/questionsService')
-const answerData = require('../data/answerData')
+const usuarioService = require('../service/usuarioService')
 
 const generate = () => crypto.randomBytes(20).toString('hex')
-const request =  function(url,method,data){  return axios({url,method,data,validateStatus:false})}
+const request =  function(url,method,data,headers){  return axios({url,method,data,validateStatus:false,headers})}
     
 test('Should get Questions',async function(){
     //given - dado que 
@@ -91,7 +91,7 @@ test('Should get One Usuario',async function(){
     //expect(respAnswer.data.conteudo).toBe(usuario.data.answers[0].descricao);
     await usuarioService.deletUsuario(usuario.id_usuario)
 })
-test.only('Should login not found',async function(){
+test('Should login not found',async function(){
     //given -
     const user= {login:'Elielso',senha:'1234'}
     
@@ -103,7 +103,7 @@ test.only('Should login not found',async function(){
     console.log(respUsuario.data)
 
 })
-test.only('Should login password Invalid',async function(){
+test('Should login password Invalid',async function(){
     //given -
     const user= {login:'Elielson',senha:'12341'}
     
@@ -113,5 +113,33 @@ test.only('Should login password Invalid',async function(){
     // then - então
     expect(401).toBe(respUsuario.status)
     console.log(respUsuario.data)
-
 })
+test('Should sucess login',async function(){
+    //given -
+    const user= {login:'eli',senha:'9804',nome_completo:generate(),email:generate(),administrador:'N'}
+    const newuser = usuarioService.saveUsuario(user)
+    const logar  = user
+     //when - quando acontecer
+    const respUsuario = await request(`http://localhost:3001/authenticate`,'post',logar)
+    
+    // then - então
+    expect(200).toBe(respUsuario.status)
+    console.log(respUsuario.data)
+
+    await usuarioService.deletUsuario(newuser.id_usuario)
+})
+test.only('Should milddawere login',async function(){
+    //given -
+    const user= {login:'eli',senha:'9804',nome_completo:generate(),email:generate(),administrador:'N'}
+    const newuser = usuarioService.saveUsuario(user)
+    const logar  = user
+     //when - quando acontecer
+    const respUsuario = await request(`http://localhost:3001/authenticate`,'post',logar,'qual')
+    
+    // then - então
+    expect(200).toBe(respUsuario.status)
+    console.log(respUsuario.data)
+
+    await usuarioService.deletUsuario(newuser.id_usuario)
+})
+
