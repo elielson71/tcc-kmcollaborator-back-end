@@ -9,6 +9,7 @@ app.use(express.json());
     app.use(cors());
     next();
 })*/
+app.use('/',require('./route/authRoute'))
 app.use('/',require('./route/usuariosRoute'))
 app.use('/',require('./route/questionsRoute'))
 app.use('/',require('./route/avaliacaoRoute'))

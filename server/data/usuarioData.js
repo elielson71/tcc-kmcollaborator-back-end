@@ -26,7 +26,13 @@ exports.putUsuario = function (id,usuario){
 }
 
  exports.deleteUsuario = async function(id){
-    return  await database.none('DELETE FROM usuario WHERE id_usuario=$1',[id]);
+     try{
+      await database.none('DELETE FROM usuario WHERE id_usuario=$1',[id]);
+      return {status:1, message:'usuario deletado com sucesso!'}
+     }catch(e){
+         
+         return {stutus:2, mensage:' error:'+e.detail}
+     }
 }
 
 function criptografa(senha){

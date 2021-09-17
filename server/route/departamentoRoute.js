@@ -7,12 +7,12 @@ router.use(authMiddleware)
 const departamentoService = require('../service/departamentoService.js')
 
 
-router.get('/departamento', async function (req, res) {
+router.get('/api/departamento', async function (req, res) {
     const departamento = await departamentoService.getDepartamento();
     res.json(departamento)
 
 })
-router.get('/departamento/:id', async function (req, res) {
+router.get('/api/departamento/:id', async function (req, res) {
     try {
         const departamento = await departamentoService.getOneDepartamento(req.params.id)
         res.status(200).json(departamento)
@@ -22,7 +22,7 @@ router.get('/departamento/:id', async function (req, res) {
 
 })
 
-router.post('/departamento', async function (req, res) {
+router.post('/api/departamento', async function (req, res) {
     const departamento = req.body;
     if (await departamentoService.existeDepartamento(departamento)) {
         res.status(404).send("Departamento já existe!")
@@ -34,7 +34,7 @@ router.post('/departamento', async function (req, res) {
 
 })
 
-router.put('/departamento/:id', async function (req, res) {
+router.put('/api/departamento/:id', async function (req, res) {
     const departamento = req.body;
     if (await departamentoService.existeDepartamento(departamento)) {
         res.status(404).send("Departamento já existe!")
@@ -44,7 +44,7 @@ router.put('/departamento/:id', async function (req, res) {
     }
 
 })
-router.delete('/departamento/:id', async function (req, res) {
+router.delete('/api/departamento/:id', async function (req, res) {
     const respDepartamentoDelete = await departamentoService.deletDepartamento(req.params.id)
     res.status(204).json(respDepartamentoDelete).end()
 })
