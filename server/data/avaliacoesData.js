@@ -88,12 +88,12 @@ exports.saveAvaliacoes = function (avaliacoes){
 }
 exports.putAvaliacoes = function (id,avaliacoes){
     return database.none('UPDATE avaliacoes SET id_avaliacoes=$1, titulo=$2, tempo=$3, id_departamento=$4 where id_avaliacoes=$5',
-    [avaliacoes.id_avaliacoes,avaliacoes.titulo,avaliacoes.tempo,id_departamento,id])
+    [avaliacoes.id_avaliacoes,avaliacoes.titulo,avaliacoes.tempo,avaliacoes.id_departamento,id])
 }
 exports.putAvaliacoesitensAvaliacoes = function (itensAvaliacoes){
     return database.none('UPDATE itens_avaliacoes SET nota_pergunta=$1, situacao=$2'+
      'where itens_avaliacoes.id_perguntas=$3 and itens_avaliacoes.id_avaliacoes=$4',
-    [itensAvaliacoes.nota_pergunta,itensAvaliacoes.situacao,itensAvaliacoes.id_perguntas,itensAvaliacoes.id_avaliacoes])
+    [itensAvaliacoes.nota_pergunta,itensAvaliacoes.situacao?itensAvaliacoes.situacao:'A',itensAvaliacoes.id_perguntas,itensAvaliacoes.id_avaliacoes])
 }
  exports.deleteAvaliacoes = async function(id){
     await database.none('DELETE FROM itens_avaliacoes WHERE id_avaliacoes=$1',[id]);

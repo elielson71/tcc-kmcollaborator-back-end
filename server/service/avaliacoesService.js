@@ -39,7 +39,6 @@ exports.saveAvaliacoes = async function (avaliacoes) {
 }
 
 exports.putAvaliacoes = async function (id_perguntas, avaliacoes) {
-    
     await avaliacoesData.putAvaliacoes(id_perguntas, avaliacoes);
     
         Object.values(avaliacoes.itensAvaliacao).forEach(async function (value) {

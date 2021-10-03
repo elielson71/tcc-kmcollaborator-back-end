@@ -11,6 +11,8 @@ app.use(express.json());
 })*/
 app.use('/',require('./route/authRoute'))
 app.use('/',require('./route/usuariosRoute'))
+app.use('/',require('./route/grupoRoute'))
+app.use('/',require('./route/correcaoRoute'))
 app.use('/',require('./route/ProfissionalRoute'))
 app.use('/',require('./route/questionsRoute'))
 app.use('/',require('./route/avaliacaoRoute'))

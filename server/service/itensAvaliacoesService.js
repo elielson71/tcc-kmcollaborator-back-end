@@ -4,6 +4,7 @@ const ItensAvaliacoesData = require('../data/itensAvaliacoesData')
 
 
 exports.saveItensAvaliacoes = async function (itensAvaliacoes) {
+    console.log(itensAvaliacoes)
     let resp = []
     if (itensAvaliacoes)
         Object.values(itensAvaliacoes).forEach(async function (value, key) {
@@ -12,10 +13,12 @@ exports.saveItensAvaliacoes = async function (itensAvaliacoes) {
             itensAvaliacoes['nota_pergunta'] = value.nota_pergunta
             itensAvaliacoes['id_perguntas'] = value.id_perguntas
             itensAvaliacoes['situacao'] = value.situacao
-            if(await ItensAvaliacoesData.getItensAvaliacoesPerguntas(value.id_avaliacoes,value.id_perguntas))
+            const existeItens = await ItensAvaliacoesData.getItensAvaliacoesPerguntas(value.id_avaliacoes,value.id_perguntas)
+            if(existeItens.length!==0){
                 resp = await ItensAvaliacoesData.updateItensAvaliacoes(itensAvaliacoes);
-            else
+            }else{
                 resp = await ItensAvaliacoesData.saveItensAvaliacoes(itensAvaliacoes);
+            }
         })
     return resp;
 

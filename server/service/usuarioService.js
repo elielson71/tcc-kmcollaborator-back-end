@@ -37,7 +37,9 @@ exports.getAuthenticate = async function (usuario) {
 
 
 exports.putUsuario = async function (id_usuario, usuario) {
-
+    if (usuario.senha === (await usuarioData.getOneUsuario(id_usuario))[0].senha)
+        delete usuario.senha
+    
      await usuarioData.putUsuario(id_usuario, usuario);
      return'ok'
 }

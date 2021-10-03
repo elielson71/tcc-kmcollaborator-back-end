@@ -13,11 +13,12 @@ exports.saveItensAvaliacoes = function (ItensAvaliacoes) {
 }
 
 exports.updateItensAvaliacoes = function (ItensAvaliacoes) {
-   if (ItensAvaliacoes === {})
+   if (ItensAvaliacoes.length===0)
       return
       
    return database.none(`UPDATE itens_avaliacoes SET nota_pergunta=
-   ${ItensAvaliacoes.nota_pergunta}, situacao='${ItensAvaliacoes.situacao}'` )
+   ${ItensAvaliacoes.nota_pergunta}, situacao='${ItensAvaliacoes.situacao}'
+    where itens_avaliacoes.itens_avaliacoes=${ItensAvaliacoes.id_avaliacoes} and itens_avaliacoes.id_perguntas=${ItensAvaliacoes.id_perguntas}` )
 }
 
 exports.deleteItensAvaliacoes = function (id) {
