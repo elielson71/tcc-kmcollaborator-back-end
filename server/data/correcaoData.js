@@ -8,6 +8,38 @@ exports.getCorrecao = function () {
 exports.getOneCorrecao = function (id_correcao) {
     return database.query(`select id_correcao,id_perguntas,id_profissional,id_resposta,id_avaliacao,nota,situacao,data_correcao,resposta from correcao where id_correcao=${id_correcao}`)
 }
+exports.getNotaParcial = function (id_avaliacao,id_profissional) {
+    return database.query(`
+    SELECT 
+sum(public.correcao.nota) as nota_parcial
+FROM
+  public.avaliacoes
+  INNER JOIN public.correcao ON (public.avaliacoes.id_avaliacoes = public.correcao.id_avaliacao)
+  where 
+    public.avaliacoes.id_avaliacoes=${id_avaliacao}
+  public.correcao.id_profissional=${id_profissional}
+  group by
+    public.avaliacoes.id_avaliacoes,
+  public.correcao.id_profissional
+    `)
+}
+exports.getGabarito = function (id_avaliacao) {
+    return database.query(`
+    SELECT 
+        public.avaliacoes.id_avaliacoes,
+        public.correcao.id_resposta,
+        public.itens_avaliacoes.nota_pergunta,
+        public.correcao.id_correcao
+    FROM
+    public.avaliacoes
+        INNER JOIN public.correcao ON (public.avaliacoes.id_avaliacoes = public.correcao.id_avaliacao)
+        INNER JOIN public.respostas ON (public.correcao.id_resposta = public.respostas.id_respostas)
+        INNER JOIN public.itens_avaliacoes ON (public.avaliacoes.id_avaliacoes = public.itens_avaliacoes.id_avaliacoes)
+        AND (public.itens_avaliacoes.id_perguntas = public.correcao.id_perguntas)
+        AND (public.itens_avaliacoes.id_perguntas = public.respostas.id_perguntas)
+    WHERE
+    avaliacoes.id_avaliacoes=${id_avaliacao} and  respostas.correta = 'S'`)
+}
 
 exports.saveCorrecao = function (correcao) {
     const data_cadastro = new Date();

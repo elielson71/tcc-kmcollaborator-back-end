@@ -9,9 +9,11 @@ exports.getOneCorrecao = async (id_correcao) => {
 }
 
 exports.saveCorrecao = async function (correcao) {
+    //correcaoAutomatica(correcao)
     return correcao.map(async item => {
         const newCorrecao = await correcaoData.saveCorrecao(item);
-        return newCorrecao
+        const nota_parcial = correcaoAutomatica(newCorrecao)
+        return nota_parcial
     })
 }
 
@@ -25,6 +27,17 @@ exports.deletCorrecao = async function (id) {
     return correcaoData.deleteCorrecao(id)
 };
 
-function correcaoAutomatica(correcao) {
+async function correcaoAutomatica(correcao) {
+    //const itensCorrigir = correcao.filter(item => item.id_resposta)
 
+    const gabarito = await correcaoData.getGabarito(correcao.id_avaliacao)
+    gabarito.map(async item=>{
+        await correcaoData.putCorrecao(item.id_correcao,{'id_correcao':item.id_correcao,'nota':item.nota_pergunta,'situacao':'C'})
+    })
+    return await correcaoData.getNotaParcial(correcao.id_avaliacao,correcao.id_profissional)
+    // consulta todas as atividade que tem id resposta e que correta S e com nota da questão
+    //pegar primeiro id da correcao 
+    //verifico de id_resposta está objeto da consulta
+    //if tiver coloca nota questão
+    //else tiver coloca zero na nota da correcao 
 }
