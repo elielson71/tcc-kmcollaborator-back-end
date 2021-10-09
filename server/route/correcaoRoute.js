@@ -20,6 +20,15 @@ router.get('/api/correcao/:id', async function (req, res) {
     }
 
 })
+router.get('/api/correcao/itensquestions/:id', async function(req,res){
+    const questions = await correcaoService.getCorrecaoItensQuestions(req.params.id)
+    res.json(questions)
+})
+router.post('/api/correcao/itensrespostas/:id', async function(req,res){
+    const correcao = req.body;
+    const questions = await correcaoService.getRespostaCorrecao(correcao)
+    res.json(questions)
+})
 
 router.post('/api/correcao', async function (req, res) {
     const correcao = req.body;
