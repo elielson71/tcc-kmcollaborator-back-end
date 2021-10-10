@@ -2,7 +2,20 @@
 const database = require('../infra/database')
 
 exports.getCorrecao = function () {
-    return database.query('select id_correcao,id_profissional,id_avaliacao,situacao,data_correcao from correcao ') // where=status='C'
+    return database.query(`SELECT 
+    correcao.id_correcao,
+    correcao.id_profissional,
+    correcao.id_avaliacao,
+    correcao.situacao,
+    correcao.data_correcao,
+    nota.nota
+  FROM
+    correcao
+    INNER JOIN (
+    select sum(nota) as nota,id_correcao from itens_correcao 
+    group by
+    id_correcao
+    ) nota ON correcao.id_correcao = nota.id_correcao`)
 }
 
 exports.getOneCorrecao = function (id_correcao) {
