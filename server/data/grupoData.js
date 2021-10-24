@@ -9,10 +9,22 @@ exports.getOneGrupo = function (id_grupo) {
     return database.query(`select id_grupo,nome
       from grupo where id_grupo=${id_grupo}`)
 }
-exports.getNomeGrupo = function(nome,id_grupo){
+exports.getUsuarioGrupo = function (id_usuario) {
+    return database.query(`
+    SELECT 
+        public.usuario_grupo.id_grupo,
+        public.usuario_grupo.id_usuario,
+        public.grupo.nome
+    FROM
+        public.usuario_grupo
+        INNER JOIN public.grupo ON (public.usuario_grupo.id_grupo = public.grupo.id_grupo)
+    WHERE
+        id_usuario=${id_usuario}`)
+}
+exports.getNomeGrupo = function (nome, id_grupo) {
     return database.query(`select id_grupo from grupo 
     where nome='${nome}' 
-    ${id_grupo?`and id_grupo<>${id_grupo}`:''}`)
+    ${id_grupo ? `and id_grupo<>${id_grupo}` : ''}`)
 }
 exports.saveGrupo = function (grupo) {
     return database.one(`INSERT INTO grupo (nome)
@@ -21,7 +33,7 @@ exports.saveGrupo = function (grupo) {
 }
 exports.putGrupo = function (id, grupo) {
     return database.none('UPDATE grupo SET nome=$1 where id_grupo=$2',
-    [grupo.nome,id])
+        [grupo.nome, id])
 }
 
 exports.deleteGrupo = async function (id) {

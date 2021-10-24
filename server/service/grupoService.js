@@ -12,6 +12,11 @@ exports.getOneGrupo = async (id_grupo) => {
     if (!resp) throw new Error('Grupo não Encontrado')
     return resp
 }
+exports.getUsuarioGrupo = async (id_usuario) => {
+    const resp = await grupoData.getUsuarioGrupo(id_usuario)
+    if (!resp) throw new Error('Usuario_Grupo não Encontrado')
+    return resp
+}
 
 exports.saveGrupo = async function (grupo) {
     const newGrupo = await grupoData.saveGrupo(grupo);

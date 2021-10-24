@@ -14,7 +14,7 @@ router.get('/api/usuario', async function (req, res) {
 router.get('/api/usuario/:id', async function (req, res) {
     try {
         const usuario = await usuarioService.getOneUsuario(req.params.id)
-        res.cookie(usuario.token,{httpOnly:true})
+        res.cookie(usuario.token, { httpOnly: true })
         res.status(200).json(usuario)
     } catch (e) {
         res.status(404).send(e.message)
@@ -31,6 +31,15 @@ router.post('/api/usuario', async function (req, res) {
         res.status(201).json(newUsuario)
     }
 })
+router.post('/api/usuario/grupo', async function (req, res) {
+    const usergrupo = req.body;
+    const newUserGrupo = await usuarioService.saveUsuarioGrupo(usergrupo);
+    if (newUserGrupo === 'existe grupo vinculado ao usuarios') {
+        res.status(404).send("existe grupo vinculado ao usuarios")
+    } else {
+        res.status(201).json(newUserGrupo)
+    }
+})
 
 router.put('/api/usuario/:id', async function (req, res) {
     const usuario = req.body;
@@ -44,9 +53,17 @@ router.put('/api/usuario/:id', async function (req, res) {
 })
 router.delete('/api/usuario/:id', async function (req, res) {
     const respUsuarioDelete = await usuarioService.deletUsuario(req.params.id)
-    if(respUsuarioDelete.status===1)
-    res.status(204).json(respUsuarioDelete).end()
-    else{
+    if (respUsuarioDelete.status === 1)
+        res.status(204).json(respUsuarioDelete).end()
+    else {
+        res.status(400).json(respUsuarioDelete.mensage)
+    }
+})
+router.post('/api/deleteusuariogrupo/', async function (req, res) {
+    const respUsuarioDelete = await usuarioService.deleteUsuarioGrupo(req.body)
+    if (respUsuarioDelete.status === 1)
+        res.status(204).json(respUsuarioDelete).end()
+    else {
         res.status(400).json(respUsuarioDelete.mensage)
     }
 })

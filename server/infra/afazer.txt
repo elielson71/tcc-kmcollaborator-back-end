@@ -1,0 +1,4 @@
+[ ] trata questo da correção ao automatica com selação mais de uma
+[ ] base de conhecimento
+[ ] relatório
+[ ] Coloca msg no inicio da resposta

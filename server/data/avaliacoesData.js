@@ -27,56 +27,27 @@ exports.getAvaliacoesItenQuestions = function(id_avaliacoes){
 }
 exports.getAvaliacoesQuestions = function(id_avaliacoes){
   
-    return database.query(`SELECT 
-    public.perguntas.id_perguntas,
-    public.perguntas.conteudo,
-    public.perguntas.tipo_resposta,
-    public.perguntas.status,
-    public.perguntas.id_responsavel,
-    public.perguntas.id_departamento,
-    public.perguntas.senioridade,
-    CASE 
-      WHEN public.itens_avaliacoes.id_avaliacoes = ${id_avaliacoes} and public.itens_avaliacoes.situacao='AB'
-        THEN 'AB'
-      ELSE  ''
-    END AS situacao,
-    itens_avaliacoes.id_avaliacoes,
-    CASE 
-      WHEN public.itens_avaliacoes.id_avaliacoes = ${id_avaliacoes}
-        THEN nota_pergunta
-      ELSE  0
-    END as nota_pergunta
-    
-  FROM
-    public.perguntas
-    LEFT OUTER JOIN public.itens_avaliacoes ON (public.perguntas.id_perguntas = public.itens_avaliacoes.id_perguntas)
-    left join ( select id_perguntas from itens_avaliacoes where  itens_avaliacoes.id_avaliacoes=${id_avaliacoes})
-    itens on perguntas.id_perguntas<>itens.id_perguntas
-    where 
-    perguntas.id_perguntas<>itens.id_perguntas
-    
-    union
-    SELECT 
-    public.perguntas.id_perguntas,
-    public.perguntas.conteudo,
-    public.perguntas.tipo_resposta,
-    public.perguntas.status,
-    public.perguntas.id_responsavel,
-    public.perguntas.id_departamento,
-    public.perguntas.senioridade,
-    CASE 
-      WHEN public.itens_avaliacoes.id_avaliacoes = ${id_avaliacoes} and public.itens_avaliacoes.situacao='AB'
-        THEN 'AB'
-      ELSE  ''
-    END AS situacao,
-    itens_avaliacoes.id_avaliacoes,
-    public.itens_avaliacoes.nota_pergunta
-  FROM
-    public.perguntas
-    inner  JOIN public.itens_avaliacoes ON (public.perguntas.id_perguntas = public.itens_avaliacoes.id_perguntas)
-    
-    where 
-    itens_avaliacoes.id_avaliacoes=${id_avaliacoes}
+    return database.query(`
+        SELECT 
+          public.perguntas.id_perguntas,
+          public.perguntas.conteudo,
+          public.perguntas.tipo_resposta,
+          public.perguntas.status,
+          public.perguntas.id_responsavel,
+          public.perguntas.id_departamento,
+          public.perguntas.senioridade,
+	      CASE 
+            WHEN itens.id_avaliacoes =${id_avaliacoes}and itens.situacao='AB'
+              THEN 'AB'
+            ELSE  ''
+          END AS situacao,
+        itens.id_avaliacoes  as id_avaliacoes,
+        CASE WHEN itens.id_avaliacoes =${id_avaliacoes}THEN nota_pergunta ELSE  null  END as nota_pergunta
+        FROM
+          public.perguntas
+          left join ( select id_perguntas,id_avaliacoes,nota_pergunta,situacao from itens_avaliacoes where  itens_avaliacoes.id_avaliacoes=${id_avaliacoes})
+          itens on perguntas.id_perguntas=itens.id_perguntas
+
   
   `)
     

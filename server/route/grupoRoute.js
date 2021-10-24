@@ -12,13 +12,12 @@ router.get('/api/grupo', async function (req, res) {
 
 })
 router.get('/api/grupo/:id', async function (req, res) {
-    //try {
         const grupo = await grupoService.getOneGrupo(req.params.id)
         res.status(200).json(grupo)
-    /*} catch (e) {
-        res.status(404).send(e.message)
-    }*/
-
+})
+router.get('/api/usuariogrupo/:id', async function (req, res) {
+        const grupo = await grupoService.getUsuarioGrupo(req.params.id)
+        res.status(200).json(grupo)
 })
 
 router.post('/api/grupo', async function (req, res) {

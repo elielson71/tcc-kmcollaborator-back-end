@@ -22,7 +22,6 @@ router.get('/api/questions/answer/:id', async function(req,res){
 
 router.post('/api/questions', async function(req,res){
     const questions = req.body;
-    //console.log(questions)
     const newQuestion = await questionsService.saveQuestion(questions)
     res.status(201).json(newQuestion)
 

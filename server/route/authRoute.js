@@ -41,7 +41,8 @@ router.get('/api/checkToken', async function (req, res) {
         if (err) {
             res.status(401).send('Não autorizado: Token inválido!');
         } else {
-            res.status(200).send('ok')
+            
+            res.status(200).json({id:(jwt.decode(token)).id,id_profissional:jwt.decode(token).id_profissional})
         }
 
     })
