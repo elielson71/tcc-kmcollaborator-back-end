@@ -586,3 +586,61 @@ FROM
   INNER JOIN respostas ON (itens_correcao.id_resposta = respostas.id_respostas)
   INNER JOIN itens_avaliacoes ON (respostas.id_perguntas = itens_avaliacoes.id_perguntas)
   AND (correcao.id_avaliacao = itens_avaliacoes.id_avaliacoes);
+
+--------------- SQL ---------------
+
+CREATE VIEW vs_nota_profissional
+AS
+  SELECT 
+  public.avaliacoes.titulo,
+  public.profissional.nome_completo,
+	notas.nota,
+    correcao.data_correcao,
+    correcao.id_profissional
+FROM
+  public.avaliacoes
+  INNER JOIN public.correcao ON (public.avaliacoes.id_avaliacoes = public.correcao.id_avaliacao)
+  INNER JOIN public.profissional on (public.profissional.id_profissional=public.correcao.id_profissional)
+  INNER JOIN (
+  select sum(vs_nota.nota_pergunta) as nota,vs_nota.id_correcao from vs_nota 
+  GROUP by vs_nota.id_profissional,vs_nota.id_correcao)
+   notas ON (public.correcao.id_correcao = notas.id_correcao)
+WHERE
+  public.correcao.situacao = 'C';
+--------------- SQL ---------------
+CREATE OR REPLACE VIEW public.vs_nota_profissional(
+    titulo,
+    nome_completo,
+    nota,
+    data_correcao,
+    id_profissional,
+    id_departamento,
+    desc_partamento)
+AS
+  SELECT avaliacoes.titulo,
+         profissional.nome_completo,
+         notas.nota,
+         correcao.data_correcao,
+         correcao.id_profissional,
+         profissional.id_departamento,
+         departamento.nome as desc_partamento
+  FROM avaliacoes
+       JOIN correcao ON avaliacoes.id_avaliacoes = correcao.id_avaliacao
+       JOIN profissional ON profissional.id_profissional =
+         correcao.id_profissional
+         left join departamento ON departamento.id_departamento=profissional.id_departamento
+left JOIN 
+       (SELECT 
+  public.correcao.id_profissional,
+  sum(public.itens_correcao.nota) AS nota,
+  public.correcao.id_correcao
+FROM
+  public.correcao
+  INNER JOIN public.itens_correcao ON (public.correcao.id_correcao = public.itens_correcao.id_correcao)
+WHERE
+  public.correcao.situacao = 'C'
+GROUP BY
+  public.correcao.id_profissional,
+  public.correcao.id_correcao
+       ) notas ON correcao.id_correcao = notas.id_correcao
+  WHERE correcao.situacao::text = 'C'::text;

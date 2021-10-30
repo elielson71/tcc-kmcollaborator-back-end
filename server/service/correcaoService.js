@@ -14,6 +14,9 @@ exports.getCorrecaoItensQuestions = async (id_correcao) => {
 exports.getRespostaCorrecao = async (correcao) => {
     return await correcaoData.getRespostaCorrecao(correcao)
 }
+exports.getRelatorioProfissonal = async(id_profissional)=>{
+    return await correcaoData.getRelatorioProfissonal(id_profissional)
+}
 exports.saveCorrecao = async function (correcao) {
     const newcorrecao = await correcaoData.saveCorrecao(correcao);
     return correcao.itens_correcao.map(async item => {
@@ -21,7 +24,6 @@ exports.saveCorrecao = async function (correcao) {
         await itensCorrecao.saveItensCorrecao(item)
     })
 }
-
 
 exports.putCorrecao = async function (id_correcao, correcao) {
     await correcaoData.putCorrecao(id_correcao, correcao);

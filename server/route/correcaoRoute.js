@@ -24,6 +24,11 @@ router.get('/api/correcao/itensquestions/:id', async function(req,res){
     const questions = await correcaoService.getCorrecaoItensQuestions(req.params.id)
     res.json(questions)
 })
+router.get('/api/relatorioprofissonal/:id', async function(req,res){
+    const RelatorioProfissonal = await correcaoService.getRelatorioProfissonal(req.params.id)
+    res.json(RelatorioProfissonal)
+})
+
 router.post('/api/correcao/itensrespostas/:id', async function(req,res){
     const correcao = req.body;
     const questions = await correcaoService.getRespostaCorrecao(correcao)

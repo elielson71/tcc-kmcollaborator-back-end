@@ -15,7 +15,9 @@ exports.getCorrecao = function () {
     select sum(nota) as nota,id_correcao from itens_correcao 
     group by
     id_correcao
-    ) nota ON correcao.id_correcao = nota.id_correcao`)
+    ) nota ON correcao.id_correcao = nota.id_correcao
+    ORDER by
+    correcao.situacao,nota.nota desc`)
 }
 
 exports.getOneCorrecao = function (id_correcao) {
@@ -52,7 +54,14 @@ exports.getRespostaCorrecao = function ({id_correcao,id_pergunta}) {
     return database.query(`select id_respostas,id_perguntas,descricao,selecao,correta 
     from vs_resposta_correcao where id_correcao=${id_correcao} and id_perguntas=${id_pergunta}`)
 }
-
+exports.getRelatorioProfissonal = function (){
+   return database.query(`select titulo,
+   nome_completo,
+   nota,
+   data_correcao,
+   id_profissional,    id_departamento,
+   desc_partamento from vs_nota_profissional order by id_profissional`)
+}
 exports.saveCorrecao = function (correcao) {
     //    const data_cadastro = new Date();
     return database.one(`
@@ -62,9 +71,10 @@ exports.saveCorrecao = function (correcao) {
         correcao.id_avaliacao, correcao.situacao])
 }
 exports.putCorrecao = function (id, correcao) {
+    const data = new Date()
     return database.none(`UPDATE correcao SET
-    situacao='${correcao.situacao}'
-     where id_correcao=${id}`)
+    situacao='${correcao.situacao}', data_correcao=$1
+     where id_correcao=${id}`,data)
 }
 
 exports.deleteCorrecao = async function (id) {
