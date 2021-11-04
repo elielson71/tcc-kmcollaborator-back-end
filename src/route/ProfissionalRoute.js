@@ -4,7 +4,7 @@ const express = require('express');
 const authMiddleware = require('../middleware/auth')
 const router = express.Router();
 router.use(authMiddleware)
-const profissionalService = require('../service/profissionalService')
+const profissionalService = require('../service/profissionalservice')
 
 router.get('/api/profissional', async function (req, res) {
     const profissional = await profissionalService.getProfissional();
