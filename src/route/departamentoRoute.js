@@ -4,7 +4,7 @@ const express = require('express');
 const authMiddleware = require('../middleware/auth')
 const router = express.Router();
 router.use(authMiddleware)
-const departamentoService = require('../service/departamentoService.js')
+const departamentoService = require('../service/departamentoservice.js')
 
 
 router.get('/api/departamento', async function (req, res) {

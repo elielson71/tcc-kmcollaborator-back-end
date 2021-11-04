@@ -1,5 +1,5 @@
 // camada responsavel pelas regras de negocio
-const profissionalData = require('../data/profissionalData.js')
+const profissionalData = require('../data/profissionaldata.js')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 

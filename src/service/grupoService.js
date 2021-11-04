@@ -1,5 +1,5 @@
 // camada responsavel pelas regras de negocio
-const grupoData = require('../data/grupoData.js')
+const grupoData = require('../data/grupodata.js')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 

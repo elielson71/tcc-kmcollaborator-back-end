@@ -1,6 +1,6 @@
 // camada responsavel pelas regras de negocio
-const questionsData = require('../data/questionsData')
-const answerData = require('../data/answerData')
+const questionsData = require('../data/questionsata')
+const answerData = require('../data/answerdata')
 
 
 exports.getQuestions = () => questionsData.getQuestion();

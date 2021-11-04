@@ -1,6 +1,6 @@
 // camada responsavel pelas regras de negocio
-const correcaoData = require('../data/correcaoData.js');
-const itensCorrecao = require('../data/itensCorrecaoData.js');
+const correcaoData = require('../data/correcaodata.js');
+const itensCorrecao = require('../data/itenscorrecaodata.js');
 
 exports.getCorrecao = () => correcaoData.getCorrecao();
 exports.getOneCorrecao = async (id_correcao) => {

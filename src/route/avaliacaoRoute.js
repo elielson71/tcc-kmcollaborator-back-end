@@ -3,8 +3,8 @@ const express = require('express');
 const authMiddleware = require('../middleware/auth')
 const router = express.Router();
 router.use(authMiddleware)
-const avaliacoesService = require('../service/avaliacoesService')
-const itensAvaliacoesService = require('../service/itensAvaliacoesService');
+const avaliacoesService = require('../service/avaliacoesservice')
+const itensAvaliacoesService = require('../service/itensavaliacoesservice');
 
 router.get('/api/avaliacoes', async function(req,res){
     const avaliacoes = await avaliacoesService.getAvaliacoes();

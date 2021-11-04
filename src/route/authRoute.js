@@ -4,7 +4,7 @@ const express = require('express');
 const jwt = require('jsonwebtoken')
 const authConfig = require('../infra/config/auth.json')
 const router = express.Router();
-const usuarioService = require('../service/usuarioService')
+const usuarioService = require('../service/usuarioservice')
 
 
 router.post('/api/authenticate', async function (req, res) {
