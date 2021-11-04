@@ -1,8 +1,9 @@
-[ ] trata questo da correção ao automatica com selação mais de uma
-[ ] base de conhecimento
-[ ] relatório
-    [] coloco no menu
-    [] relatório por profisisonal
-    [] relatório por Departamento
+[X] trata questo da correção ao automatica com selação mais de uma
+[X] base de conhecimento
+[X] relatório
+    [X] coloco no menu
+    [X] relatório por profisisonal
+    [X] relatório por Departamento
 [X] Coloca msg no inicio da resposta
-criar 2 relatório
+[X] criar 2 relatório
+delete de arquivo no servidor

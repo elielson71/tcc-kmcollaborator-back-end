@@ -644,3 +644,24 @@ GROUP BY
   public.correcao.id_correcao
        ) notas ON correcao.id_correcao = notas.id_correcao
   WHERE correcao.situacao::text = 'C'::text;
+
+  --------------- SQL ---------------
+
+CREATE TABLE public.midia (
+  id_midia SERIAL NOT NULL,
+  nome VARCHAR,
+  url VARCHAR,
+  id_responsavel INTEGER,
+  tipo VARCHAR,
+  PRIMARY KEY(id_midia)
+) 
+WITH (oids = false);
+--------------- SQL ---------------
+
+ALTER TABLE public.midia
+  ADD COLUMN data_cadastro TIMESTAMP(0) WITHOUT TIME ZONE;
+
+  --------------- SQL ---------------
+
+ALTER TABLE public.itens_avaliacoes
+  DROP COLUMN nota_profissional;
