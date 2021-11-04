@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --env node --unhandled-rejections=strict --detectOpenHandles",
-    "dev": "nodemon  server/server.js",
-    "start": "node server/server.js",
+    "dev": "nodemon  src/server.js",
+    "start": "node src/server.js",
     "startd": "nodemon --inspect server/server.js"
   },
   "author": "Elielson Santos",
