@@ -9,7 +9,7 @@ app.use(express.json());
 app.use('/midias',express.static(path.resolve(__dirname,"upload")));
 
 app.use('/v1/',require('./route/authRoute'))
-app.use('/v1/',require('./route/baseconhecimentoRoute.js'))
+app.use('/v1/',require('./route/baseconhecimentoroute.js'))
 app.use('/v1/',require('./route/usuariosRoute'))
 app.use('/v1/',require('./route/grupoRoute'))
 app.use('/v1/',require('./route/correcaoRoute'))
