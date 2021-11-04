@@ -3,18 +3,18 @@ const path = require('path');
 const cors = require('cors');
 require('dotenv').config()
 const app = express();
-//app.use(cors());
 
+//app.use(cors());
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Methods", 'GET,PUT,POST,DELETE');
-    app.use(cors());
     next();
 });
 
+app.use(cors());
 app.use(express.json());
 
-app.use('/midias',express.static(path.resolve(__dirname,"upload")));
+app.use('/v1/midias',express.static(path.resolve(__dirname,"upload")));
 
 app.use('/v1/',require('./route/auth_route'))
 app.use('/v1/',require('./route/baseconhecimento_route'))
