@@ -4,7 +4,7 @@ const express = require('express');
 const authMiddleware = require('../middleware/auth')
 const router = express.Router();
 router.use(authMiddleware)
-const correcaoService = require('../service/correcaoservice')
+const correcaoService = require('../service/correcao_service')
 
 router.get('/api/correcao', async function (req, res) {
     const correcao = await correcaoService.getCorrecao();

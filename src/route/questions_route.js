@@ -3,8 +3,8 @@ const express = require('express');
 const authMiddleware = require('../middleware/auth')
 const router = express.Router();
 router.use(authMiddleware)
-const questionsService = require('../service/questionsservice')
-const answerService = require('../service/answerservice')
+const questionsService = require('../service/questions_service')
+const answerService = require('../service/answer_service')
 
 router.get('/api/questions', async function(req,res){
     const questions = await questionsService.getQuestions();

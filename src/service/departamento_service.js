@@ -1,5 +1,5 @@
 // camada responsavel pelas regras de negocio
-const departamentoData = require('../data/departamentodata.js')
+const departamentoData = require('../data/departamento_data')
 
 exports.getDepartamento = () => departamentoData.getDepartamento();
 exports.getOneDepartamento = async (id_departamento) => {

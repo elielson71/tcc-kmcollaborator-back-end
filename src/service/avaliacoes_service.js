@@ -1,6 +1,6 @@
 // camada responsavel pelas regras de negocio
-const avaliacoesData = require('../data/avaliacoesdata.js')
-const itensAvaliacoesData = require('../data/itensavaliacoesdata')
+const avaliacoesData = require('../data/avaliacoes_data')
+const itensAvaliacoesData = require('../data/itensavaliacoes_data')
 
 
 exports.getAvaliacoes = () => avaliacoesData.getAvaliacoes();

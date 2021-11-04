@@ -6,7 +6,7 @@ const authMiddleware = require('../middleware/auth')
 const uploadFiles = require('../middleware/uploadFiles')
 const router = express.Router();
 router.use(authMiddleware)
-const baseconhecimentoService = require('../service/baseconhecimentoservice.js')
+const baseconhecimentoService = require('../service/baseconhecimento_service.js')
 
 router.get('/api/baseconhecimento', async function (req, res) {
     const baseconhecimento = await baseconhecimentoService.getBaseConhecimento();

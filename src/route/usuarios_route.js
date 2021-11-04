@@ -4,7 +4,7 @@ const express = require('express');
 const authMiddleware = require('../middleware/auth')
 const router = express.Router();
 router.use(authMiddleware)
-const usuarioService = require('../service/usuarioservice')
+const usuarioService = require('../service/usuario_service')
 
 router.get('/api/usuario', async function (req, res) {
     const usuario = await usuarioService.getUsuario();

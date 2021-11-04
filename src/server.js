@@ -8,13 +8,13 @@ app.use(express.json());
 
 app.use('/midias',express.static(path.resolve(__dirname,"upload")));
 
-app.use('/v1/',require('./route/authroute'))
+app.use('/v1/',require('./route/auth_route'))
 app.use('/v1/',require('./route/baseconhecimento_route'))
-app.use('/v1/',require('./route/usuariosroute'))
-app.use('/v1/',require('./route/gruporoute'))
-app.use('/v1/',require('./route/correcaoroute'))
-app.use('/v1/',require('./route/profissionalroute'))
-app.use('/v1/',require('./route/questionsroute'))
-app.use('/v1/',require('./route/avaliacaoroute'))
-app.use('/v1/',require('./route/departamentoroute'))
+app.use('/v1/',require('./route/usuarios_route'))
+app.use('/v1/',require('./route/grupo_route'))
+app.use('/v1/',require('./route/correcao_route'))
+app.use('/v1/',require('./route/profissional_route'))
+app.use('/v1/',require('./route/questions_route'))
+app.use('/v1/',require('./route/avaliacao_route'))
+app.use('/v1/',require('./route/departamento_route'))
 app.listen(process.env.PORT || 3001)

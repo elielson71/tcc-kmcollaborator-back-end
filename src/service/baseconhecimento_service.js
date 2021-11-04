@@ -1,6 +1,6 @@
 // camada responsavel pelas regras de negocio
-const baseconhecimentoData = require('../data/baseconhecimentodata.js')
-const profissionalData = require('../data/profissionaldata')
+const baseconhecimentoData = require('../data/baseconhecimento_data')
+const profissionalData = require('../data/profissional_data')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 

@@ -1,6 +1,6 @@
 
-const answerData = require('../data/answerdata')
-const ItensAvaliacoesData = require('../data/itensavaliacoesdata')
+const answerData = require('../data/answer_data')
+const ItensAvaliacoesData = require('../data/itensavaliacoes_data')
 
 
 exports.saveItensAvaliacoes = async function (itensAvaliacoes) {
