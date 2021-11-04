@@ -3,7 +3,15 @@ const path = require('path');
 const cors = require('cors');
 require('dotenv').config()
 const app = express();
-app.use(cors());
+//app.use(cors());
+
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "127.0.0.1");
+    res.header("Access-Control-Allow-Methods", 'GET,PUT,POST,DELETE');
+    app.use(cors());
+    next();
+});
+
 app.use(express.json());
 
 app.use('/midias',express.static(path.resolve(__dirname,"upload")));
