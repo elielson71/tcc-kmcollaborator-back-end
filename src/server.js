@@ -9,11 +9,11 @@ app.use(express.json());
 app.use('/midias',express.static(path.resolve(__dirname,"upload")));
 
 app.use('/v1/',require('./route/authRoute'))
-app.use('/v1/',require('./route/BaseConhecimentoRoute.js'))
+app.use('/v1/',require('./route/baseconhecimentoRoute.js'))
 app.use('/v1/',require('./route/usuariosRoute'))
 app.use('/v1/',require('./route/grupoRoute'))
 app.use('/v1/',require('./route/correcaoRoute'))
-app.use('/v1/',require('./route/ProfissionalRoute'))
+app.use('/v1/',require('./route/profissionalroute'))
 app.use('/v1/',require('./route/questionsRoute'))
 app.use('/v1/',require('./route/avaliacaoRoute'))
 app.use('/v1/',require('./route/departamentoRoute'))
