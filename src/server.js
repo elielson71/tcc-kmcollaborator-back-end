@@ -4,14 +4,19 @@ const cors = require('cors');
 require('dotenv').config()
 const app = express();
 
-//app.use(cors());
+app.use(cors());
 app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "https://kmcollaborator.herokuapp.com");
+    console.log(req.headers)
+    //res.header("Access-Control-Allow-Origin",'http://localhost:3000');
+    res.header("Access-Control-Allow-Origin",'*');
+    res.header("Access-Control-Allow-Credentials",'true');
+    res.header("Access-Control-Allow-Headers", "Content-Type,authorization, X-Requested-With");
+    //res.header('Content-Type', 'application/json');
     res.header("Access-Control-Allow-Methods", 'GET,PUT,POST,DELETE');
+    app.use(cors());
     next();
 });
 
-app.use(cors());
 app.use(express.json());
 
 app.use('/v1/midias',express.static(path.resolve(__dirname,"upload")));
