@@ -4,7 +4,7 @@ const authConfig = require('../infra/config/auth.json')
 module.exports = (req, res, next) => {
     const authHeader = req.headers.authorization;
     
-    
+    /*
     if (!authHeader)
         return res.status(401).send({ error: 'No toke provided' })
 
@@ -23,5 +23,7 @@ module.exports = (req, res, next) => {
 
         req.userId = decoded.id;
         return next()
-    })
+    })*/
+    return next()
+
 }
