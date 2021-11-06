@@ -34,6 +34,7 @@ router.get('/api/checkToken', async function (req, res) {
 
     if (!/^Bearer$/i.test(scheme))
         return res.status(401).send({ error: 'Token malformatted' })
+        
 
 
     jwt.verify(token, authConfig.secret, function (err) {
