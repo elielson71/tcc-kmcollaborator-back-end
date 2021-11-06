@@ -6,7 +6,7 @@ require('dotenv').config()
 const app = express();
 
 app.use((req, res, next) => {
-    //console.log(req.headers)
+    console.log(req.headers)
     //res.header("Access-Control-Allow-Origin","http://kmcollaborator.herokuapp.com");
     res.header("Access-Control-Allow-Origin", "http://kmcollaborator.herokuapp.com");
     res.header("Access-Control-Allow-Origin",'*');
