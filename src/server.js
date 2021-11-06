@@ -4,9 +4,12 @@ const cors = require('cors');
 const { getUsuario } = require('./data/usuario_data');
 require('dotenv').config()
 const app = express();
-
-app.use(cors());
-app.use((req, res, next) => {
+var corsOptions={
+    origin:'http://kmcollaborator.herokuapp.com',
+    optionsSuccessStatus: 200
+}
+app.use(cors(corsOptions));
+/*app.use((req, res, next) => {
     //console.log(req.headers)
     //res.header("Access-Control-Allow-Origin","http://kmcollaborator.herokuapp.com");
     res.header("Access-Control-Allow-Origin", "http://kmcollaborator.herokuapp.com");
@@ -20,7 +23,7 @@ app.use((req, res, next) => {
     }
     app.use(cors());
     next();
-});
+});*/
 
 app.use(express.json());
 app.use('/v1/midias', express.static(path.resolve(__dirname, "upload")));
