@@ -10,7 +10,14 @@ async function ius(){
     const newUsuario = await usuarioService.saveUsuario({senha:'ednadm', nome_completo:'eli', email:'eli', administrado:'S'})
     res.status(201).json(newUsuario)
 }
-ius()
+var corsOptions = {
+  origin: 'http://example.com',
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
+
+app.get('/inserir', cors(corsOptions), function (req, res, next) {
+  ius()
+})
 app.use((req, res, next) => {
     console.log(req.headers)
     //res.header("Access-Control-Allow-Origin","http://kmcollaborator.herokuapp.com");
