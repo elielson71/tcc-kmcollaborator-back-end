@@ -4,14 +4,8 @@ const cors = require('cors');
 const { getUsuario } = require('./data/usuario_data');
 require('dotenv').config()
 const app = express();
-var corsOptions={
-    origin:'http://kmcollaborator.herokuapp.com',
-    optionsSuccessStatus: 200
-}
-app.get('/products/:id', cors(corsOptions), function (req, res, next) {
-    res.json({msg: 'This is CORS-enabled for only example.com.'})
-  })
-/*app.use((req, res, next) => {
+
+app.use((req, res, next) => {
     //console.log(req.headers)
     //res.header("Access-Control-Allow-Origin","http://kmcollaborator.herokuapp.com");
     res.header("Access-Control-Allow-Origin", "http://kmcollaborator.herokuapp.com");
@@ -25,7 +19,7 @@ app.get('/products/:id', cors(corsOptions), function (req, res, next) {
     }
     app.use(cors());
     next();
-});*/
+});
 
 app.use(express.json());
 app.use('/v1/midias', express.static(path.resolve(__dirname, "upload")));
