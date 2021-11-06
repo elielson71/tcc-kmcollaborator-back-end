@@ -9,10 +9,10 @@ const app = express();
 app.use((req, res, next) => {
     console.log(req.headers)
     //res.header("Access-Control-Allow-Origin","http://kmcollaborator.herokuapp.com");
-    //res.header("Access-Control-Allow-Origin","http://kmcollaborator.herokuapp.com");
-    res.header("Access-Control-Allow-Origin",'*');
-    res.header("Access-Control-Allow-Credentials",'true');
-    res.header("Access-Control-Allow-Headers", "Content-Type,authorization, X-Requested-With")
+    res.header("Access-Control-Allow-Origin","http://kmcollaborator.herokuapp.com");
+    //res.header("Access-Control-Allow-Origin",'*');
+    //res.header("Access-Control-Allow-Credentials",'true');
+    re//s.header("Access-Control-Allow-Headers", "Content-Type,authorization, X-Requested-With")
 
     res.header("Access-Control-Allow-Methods", 'GET,PUT,POST,DELETE');
     app.use(cors());
