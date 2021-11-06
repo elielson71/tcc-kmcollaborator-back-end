@@ -15,6 +15,7 @@ exports.getOneUsuario = async (id_usuario) => {
 }
 
 exports.saveUsuario = async function (usuario) {
+    
     const newUsuario = await usuarioData.saveUsuario(usuario);
     newUsuario.senha = undefined
     return newUsuario;

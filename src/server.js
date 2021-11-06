@@ -1,13 +1,13 @@
 const express = require('express');
 const path = require('path');
 const cors = require('cors');
-const { getUsuario } = require('./data/usuario_data');
 require('dotenv').config()
+const { getUsuario } = require('./data/usuario_data');
 const usuarioService = require('./service/usuario_service')
 const app = express();
 
 async function ius(){
-    const newUsuario = await usuarioService.saveUsuario({senha:'ednadm', nome_completo:'eli', email:'eli', administrado:'S'})
+    const newUsuario = await usuarioService.saveUsuario({login:'eli',senha:'ednadm', nome_completo:'elie', email:'elie', administrador:'S'})
     res.status(201).json(newUsuario)
 }
 var corsOptions = {
