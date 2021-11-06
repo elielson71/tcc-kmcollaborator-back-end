@@ -11,8 +11,8 @@ async function ius(){
     res.status(201).json(newUsuario)
 }
 var corsOptions = {
-  origin: 'http://example.com',
-  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+  origin: 'http://kmcollaborator.herokuapp.com',
+  optionsSuccessStatus: 200
 }
 
 app.get('/inserir', cors(corsOptions), function (req, res, next) {
