@@ -10,6 +10,7 @@ async function ius(){
     const newUsuario = await usuarioService.saveUsuario({login:'eli',senha:'ednadm', nome_completo:'elie', email:'elie', administrador:'S'})
     res.status(201).json(newUsuario)
 }
+/*
 var corsOptions = {
   origin: 'http://kmcollaborator.herokuapp.com',
   optionsSuccessStatus: 200
@@ -33,7 +34,8 @@ app.use((req, res, next) => {
     app.use(cors());
     next();
 });
-
+*/
+app.use(cors());
 app.use(express.json());
 app.use('/v1/midias', express.static(path.resolve(__dirname, "upload")));
 
