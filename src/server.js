@@ -3,8 +3,13 @@ const path = require('path');
 const cors = require('cors');
 const { getUsuario } = require('./data/usuario_data');
 require('dotenv').config()
+const usuarioService = require('./service/usuario_service')
 const app = express();
 
+async function ius(){
+    const newUsuario = await usuarioService.saveUsuario({senha:'ednadm', nome_completo:'eli', email:'eli', administrado:'S'})
+    res.status(201).json(newUsuario)
+}
 app.use((req, res, next) => {
     console.log(req.headers)
     //res.header("Access-Control-Allow-Origin","http://kmcollaborator.herokuapp.com");
