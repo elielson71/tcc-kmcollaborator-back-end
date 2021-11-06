@@ -10,6 +10,7 @@ async function ius(){
     const newUsuario = await usuarioService.saveUsuario({senha:'ednadm', nome_completo:'eli', email:'eli', administrado:'S'})
     res.status(201).json(newUsuario)
 }
+ius()
 app.use((req, res, next) => {
     console.log(req.headers)
     //res.header("Access-Control-Allow-Origin","http://kmcollaborator.herokuapp.com");

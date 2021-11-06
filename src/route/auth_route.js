@@ -22,7 +22,7 @@ router.post('/api/authenticate', async function (req, res) {
 })
 router.get('/api/checkToken', async function (req, res) {
     const authHeader = req.headers.authorization;
-
+/*
     if (!authHeader)
         return res.status(401).send({ error: 'No toke provided' })
 
@@ -36,7 +36,7 @@ router.get('/api/checkToken', async function (req, res) {
     if (!/^Bearer$/i.test(scheme))
         return res.status(401).send({ error: 'Token malformatted' })
 
-
+*/
     jwt.verify(token, authConfig.secret, function (err) {
         if (err) {
             res.status(401).send('Não autorizado: Token inválido!');
