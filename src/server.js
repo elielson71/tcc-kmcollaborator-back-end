@@ -1,13 +1,14 @@
 const express = require('express');
 const path = require('path');
 const cors = require('cors');
+const { getUsuario } = require('./data/usuario_data');
 require('dotenv').config()
 const app = express();
 
 //app.use(cors());
 app.use((req, res, next) => {
     console.log(req.headers)
-    res.header("Access-Control-Allow-Origin","https://kmcollaborator.herokuapp.com");
+    res.header("Access-Control-Allow-Origin","http://kmcollaborator.herokuapp.com");
     res.header("Access-Control-Allow-Origin","http://localhost:3000");
     //res.header("Access-Control-Allow-Origin",'*,');
     res.header("Access-Control-Allow-Credentials",'true');
@@ -19,7 +20,11 @@ app.use((req, res, next) => {
 });
 
 app.use(express.json());
+async function isu(){
+    const user =await getUsuario()
+    user.lea
 
+}
 app.use('/v1/midias',express.static(path.resolve(__dirname,"upload")));
 
 app.use('/v1/',require('./route/auth_route'))
