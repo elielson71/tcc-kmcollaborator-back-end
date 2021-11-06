@@ -6,9 +6,11 @@ require('dotenv').config()
 const app = express();
 var corsOptions={
     origin:'http://kmcollaborator.herokuapp.com',
-    optionsSuccessStatus: 200
+    optionsSuccessStatus: 204
 }
-app.use(cors(corsOptions));
+app.get('/products/:id', cors(corsOptions), function (req, res, next) {
+    res.json({msg: 'This is CORS-enabled for only example.com.'})
+  })
 /*app.use((req, res, next) => {
     //console.log(req.headers)
     //res.header("Access-Control-Allow-Origin","http://kmcollaborator.herokuapp.com");
