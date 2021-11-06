@@ -6,7 +6,7 @@ require('dotenv').config()
 const app = express();
 var corsOptions={
     origin:'http://kmcollaborator.herokuapp.com',
-    optionsSuccessStatus: 204
+    optionsSuccessStatus: 200
 }
 app.get('/products/:id', cors(corsOptions), function (req, res, next) {
     res.json({msg: 'This is CORS-enabled for only example.com.'})
