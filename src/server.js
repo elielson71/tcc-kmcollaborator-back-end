@@ -2,39 +2,8 @@ const express = require('express');
 const path = require('path');
 const cors = require('cors');
 require('dotenv').config()
-const { getUsuario } = require('./data/usuario_data');
-const usuarioService = require('./service/usuario_service')
 const app = express();
 
-async function ius(){
-    const newUsuario = await usuarioService.saveUsuario({login:'eli',senha:'ednadm', nome_completo:'elie', email:'elie', administrador:'S'})
-    res.status(201).json(newUsuario)
-}
-/*
-var corsOptions = {
-  origin: 'http://kmcollaborator.herokuapp.com',
-  optionsSuccessStatus: 200
-}
-
-app.get('/inserir', cors(corsOptions), function (req, res, next) {
-  ius()
-})
-app.use((req, res, next) => {
-    console.log(req.headers)
-    //res.header("Access-Control-Allow-Origin","http://kmcollaborator.herokuapp.com");
-    res.header("Access-Control-Allow-Origin", "http://kmcollaborator.herokuapp.com");
-    res.header("Access-Control-Allow-Origin",'*');
-    res.header("Access-Control-Allow-Credentials", 'true');
-    res.header("Access-Control-Allow-Headers", 
-    "Origin,Accept,Content-Type,authorization, X-Requested-With")
-    if (req.method === 'OPTIONS') {
-        res.header("Access-Control-Allow-Methods", 'GET,PUT,POST,DELETE');
-        return res.status(200).send({})
-    }
-    app.use(cors());
-    next();
-});
-*/
 app.use(cors());
 app.use(express.json());
 app.use('/v1/midias', express.static(path.resolve(__dirname, "upload")));

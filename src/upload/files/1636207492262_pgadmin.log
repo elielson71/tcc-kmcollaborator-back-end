@@ -1,0 +1,147 @@
+2021-05-19 09:57:55 ERROR  : ERROR:  invalid page in block 0 of relation base/71016/411816
+2021-05-19 10:02:36 ERROR  : ERROR:  invalid page in block 0 of relation base/71016/411816
+2021-05-19 10:02:57 ERROR  : ERROR:  cannot drop table ajuste_inicial_conta because other objects depend on it
+DETAIL:  view vs_contas_conciliadas depends on table ajuste_inicial_conta
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+2021-05-19 10:03:07 ERROR  : ERROR:  cannot drop table ajuste_inicial_conta because other objects depend on it
+DETAIL:  view vs_contas_conciliadas depends on table ajuste_inicial_conta
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+2021-05-19 10:11:46 ERROR  : Error connecting to the server: FATAL:  password authentication failed for user "postgres"
+
+2021-05-19 10:20:10 ERROR  : server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+2021-05-21 09:52:37 ERROR  : ERROR:  index "pg_rewrite_rel_rulename_index" contains unexpected zero page at block 0
+LINE 5: (SELECT array_agg(label) FROM pg_seclabels sl1 WHERE sl1.obj...
+                                      ^
+HINT:  Please REINDEX it.
+2021-05-21 09:54:34 ERROR  : ERROR:  index "pg_rewrite_rel_rulename_index" contains unexpected zero page at block 0
+LINE 1: ...ig) AS config FROM pg_db_role_setting s LEFT JOIN pg_roles r...
+                                                             ^
+HINT:  Please REINDEX it.
+2021-05-21 09:55:34 ERROR  : ERROR:  index "pg_rewrite_rel_rulename_index" contains unexpected zero page at block 0
+LINE 5: (SELECT array_agg(label) FROM pg_seclabels sl1 WHERE sl1.obj...
+                                      ^
+HINT:  Please REINDEX it.
+2021-05-21 10:03:08 ERROR  : ERROR:  index "pg_rewrite_rel_rulename_index" contains unexpected zero page at block 0
+LINE 1: ...ig) AS config FROM pg_db_role_setting s LEFT JOIN pg_roles r...
+                                                             ^
+HINT:  Please REINDEX it.
+2021-05-21 10:03:18 ERROR  : ERROR:  index "pg_rewrite_rel_rulename_index" contains unexpected zero page at block 0
+LINE 5: (SELECT array_agg(label) FROM pg_seclabels sl1 WHERE sl1.obj...
+                                      ^
+HINT:  Please REINDEX it.
+2021-05-21 10:03:55 ERROR  : ERROR:  index "pg_rewrite_rel_rulename_index" contains unexpected zero page at block 0
+LINE 6: (SELECT array_agg(label) FROM pg_seclabels sl1 WHERE sl1.obj...
+                                      ^
+HINT:  Please REINDEX it.
+2021-05-21 10:04:01 ERROR  : ERROR:  index "pg_rewrite_rel_rulename_index" contains unexpected zero page at block 0
+LINE 2: (SELECT array_agg(label) FROM pg_seclabels sl1 WHERE sl1.obj...
+                                      ^
+HINT:  Please REINDEX it.
+2021-05-21 10:04:02 ERROR  : ERROR:  index "pg_rewrite_rel_rulename_index" contains unexpected zero page at block 0
+LINE 2: (SELECT array_agg(label) FROM pg_seclabels sl1 WHERE sl1.obj...
+                                      ^
+HINT:  Please REINDEX it.
+2021-05-21 10:04:03 ERROR  : ERROR:  index "pg_rewrite_rel_rulename_index" contains unexpected zero page at block 0
+LINE 34: (SELECT array_agg(label) FROM pg_seclabels sl1 WHERE sl1.obj...
+                                       ^
+HINT:  Please REINDEX it.
+2021-05-21 10:04:05 ERROR  : ERROR:  index "pg_rewrite_rel_rulename_index" contains unexpected zero page at block 0
+LINE 2: (SELECT array_agg(label) FROM pg_seclabels sl1 WHERE sl1.obj...
+                                      ^
+HINT:  Please REINDEX it.
+2021-05-21 10:04:06 ERROR  : ERROR:  index "pg_rewrite_rel_rulename_index" contains unexpected zero page at block 0
+LINE 2: (SELECT array_agg(label) FROM pg_seclabels sl1 WHERE sl1.obj...
+                                      ^
+HINT:  Please REINDEX it.
+2021-05-21 10:04:23 ERROR  : ERROR:  index "pg_rewrite_rel_rulename_index" contains unexpected zero page at block 0
+LINE 5: (SELECT array_agg(label) FROM pg_seclabels sl1 WHERE sl1.obj...
+                                      ^
+HINT:  Please REINDEX it.
+2021-09-04 04:25:42 ERROR  : ERROR:  CREATE DATABASE cannot be executed from a function or multi-command string
+2021-09-04 04:26:09 ERROR  : ERROR:  column "id_questions" named in key does not exist
+LINE 14:   PRIMARY KEY(id_questions)
+           ^
+2021-09-04 14:45:06 ERROR  : ERROR:  column "elielsonboavista" does not exist
+LINE 1: select * from usuario where login='Leo' or email=elielsonboa...
+                                                         ^
+2021-09-04 18:48:07 ERROR  : ERROR:  syntax error at end of input
+LINE 1: ...' or email='elielsonboavista9@gmail.com)' and id_usuario<>18
+                                                                       ^
+2021-09-04 18:48:14 ERROR  : ERROR:  syntax error at end of input
+LINE 1: ...' or email='elielsonboavista9@gmail.com)' and id_usuario<>18
+                                                                       ^
+2021-10-16 05:46:17 ERROR  : Error connecting to the server: FATAL:  password authentication failed for user "postgres"
+
+2021-10-22 10:46:09 ERROR  : Error connecting to the server: FATAL:  password authentication failed for user "postgres"
+
+2021-10-22 10:46:12 ERROR  : Error connecting to the server: FATAL:  password authentication failed for user "postgres"
+
+2021-10-22 10:46:15 ERROR  : Error connecting to the server: FATAL:  password authentication failed for user "postgres"
+
+2021-10-22 10:49:06 ERROR  : Error connecting to the server: FATAL:  password authentication failed for user "postgres"
+
+2021-10-22 10:49:13 ERROR  : Error connecting to the server: FATAL:  password authentication failed for user "postgres"
+
+2021-11-03 22:37:17 ERROR  : ERROR:  function pg_last_xlog_receive_location() does not exist
+LINE 1: ...E NULL END as inrecovery, CASE WHEN usesuper THEN pg_last_xl...
+                                                             ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+2021-11-03 22:37:20 ERROR  : Column not found in pgSet: usecreatedb
+2021-11-03 22:37:23 ERROR  : Column not found in pgSet: usesuper
+2021-11-03 22:37:24 ERROR  : Column not found in pgSet: upsince
+2021-11-03 22:37:25 ERROR  : Column not found in pgSet: confloadedsince
+2021-11-03 22:37:29 ERROR  : Column not found in pgSet: inrecovery
+2021-11-03 22:37:31 ERROR  : Column not found in pgSet: replayloc
+2021-11-03 22:37:32 ERROR  : Column not found in pgSet: receiveloc
+2021-11-03 22:37:32 ERROR  : Column not found in pgSet: replay_timestamp
+2021-11-03 22:37:33 ERROR  : Column not found in pgSet: isreplaypaused
+2021-11-03 22:40:47 ERROR  : ERROR:  column "proisagg" does not exist
+LINE 9:  WHERE proisagg = FALSE AND pronamespace = 2200::oid
+               ^
+HINT:  Perhaps you meant to reference the column "pr.prolang".
+2021-11-03 22:40:51 ERROR  : ERROR:  column rel.relhasoids does not exist
+LINE 1: ...t_userbyid(rel.relowner) AS relowner, rel.relacl, rel.relhas...
+                                                             ^
+2021-11-03 22:40:54 ERROR  : ERROR:  column "proisagg" does not exist
+LINE 9:  WHERE proisagg = FALSE AND pronamespace = 2200::oid
+               ^
+HINT:  Perhaps you meant to reference the column "pr.prolang".
+2021-11-03 22:41:14 ERROR  : ERROR:  CREATE DATABASE cannot run inside a transaction block
+2021-11-04 13:08:11 ERROR  : FATAL:  permission denied for database "de66aqcv62rtka"
+DETAIL:  User does not have CONNECT privilege.
+
+2021-11-06 08:30:42 ERROR  : ERROR:  function pg_last_xlog_receive_location() does not exist
+LINE 1: ...E NULL END as inrecovery, CASE WHEN usesuper THEN pg_last_xl...
+                                                             ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+2021-11-06 08:30:43 ERROR  : Column not found in pgSet: usecreatedb
+2021-11-06 08:30:43 ERROR  : Column not found in pgSet: usesuper
+2021-11-06 08:30:44 ERROR  : Column not found in pgSet: upsince
+2021-11-06 08:30:44 ERROR  : Column not found in pgSet: confloadedsince
+2021-11-06 08:30:45 ERROR  : Column not found in pgSet: inrecovery
+2021-11-06 08:30:45 ERROR  : Column not found in pgSet: replayloc
+2021-11-06 08:30:45 ERROR  : Column not found in pgSet: receiveloc
+2021-11-06 08:30:45 ERROR  : Column not found in pgSet: replay_timestamp
+2021-11-06 08:30:45 ERROR  : Column not found in pgSet: isreplaypaused
+2021-11-06 08:32:44 ERROR  : ERROR:  syntax error at or near "from"
+LINE 2: delete from usuario
+               ^
+2021-11-06 08:32:44 ERROR  : ERROR:  syntax error at or near "from"
+LINE 2: delete from usuario
+               ^
+2021-11-06 09:19:02 ERROR  : ERROR:  column "proisagg" does not exist
+LINE 9:  WHERE proisagg = FALSE AND pronamespace = 2200::oid
+               ^
+HINT:  Perhaps you meant to reference the column "pr.prolang".
+2021-11-06 09:19:04 ERROR  : ERROR:  column rel.relhasoids does not exist
+LINE 1: ...t_userbyid(rel.relowner) AS relowner, rel.relacl, rel.relhas...
+                                                             ^
+2021-11-06 09:19:06 ERROR  : ERROR:  column "proisagg" does not exist
+LINE 9:  WHERE proisagg = FALSE AND pronamespace = 2200::oid
+               ^
+HINT:  Perhaps you meant to reference the column "pr.prolang".
+2021-11-06 10:59:25 ERROR  : ERROR:  relation "mida" does not exist
+LINE 1: select * from mida
+                      ^
