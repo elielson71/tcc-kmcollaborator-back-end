@@ -1,4 +1,4 @@
 node_modules/
 .env
-server/upload/*
-!server/upload/files/.gitkeep
+src/upload/*
+!scr/upload/files/.gitkeep

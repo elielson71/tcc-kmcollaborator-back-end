@@ -3,6 +3,9 @@ const authConfig = require('../infra/config/auth.json')
 
 module.exports = (req, res, next) => {
     const authHeader = req.headers.authorization;
+    //console.log(req.originalUrl==='/v1/midias/')
+    if(req.url.slice(0,7)==='/midias')
+        return next()
     
     
     if (!authHeader)

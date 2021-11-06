@@ -21,7 +21,7 @@ exports.existeBaseConhecimento= function (nome) {
 
 exports.saveBaseConhecimento = function (baseconhecimento) {
     const data_cadastro = new Date();
-    const path = (baseconhecimento.path).substring(13)
+    const path = (baseconhecimento.path).substring(11)
     return database.one('INSERT INTO midia ( nome,url,id_responsavel,tipo,data_cadastro) VALUES($1,$2,$3,$4,$5) returning *',
         [baseconhecimento.originalname, path, 1, baseconhecimento.mimetype, data_cadastro])
 }

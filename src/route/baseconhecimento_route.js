@@ -73,7 +73,7 @@ router.delete('/api/baseconhecimento/:id', async function (req, res) {
     fs.stat(f + '\\upload\\' + bc[0].url, (err) => {
         if (err)
             throw err;
-        fs.unlink('server\\upload\\' + bc[0].url, (err) => {
+        fs.unlink('src\\upload\\' + bc[0].url, (err) => {
             if (err)
                 throw err;
         })
