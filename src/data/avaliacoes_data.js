@@ -55,7 +55,7 @@ exports.getAvaliacoesQuestions = function(id_avaliacoes){
 
 exports.saveAvaliacoes = function (avaliacoes){
     return database.one('INSERT INTO avaliacoes ( titulo,tempo,id_usuario,id_departamento) VALUES($1,$2,$3,$4) returning *',
-    [avaliacoes.titulo,(avaliacoes.tempo),1,avaliacoes.id_departamento])
+    [avaliacoes.titulo,(avaliacoes.tempo),avaliacoes.id_usuario,avaliacoes.id_departamento])
 }
 exports.putAvaliacoes = function (id,avaliacoes){
     return database.none('UPDATE avaliacoes SET id_avaliacoes=$1, titulo=$2, tempo=$3, id_departamento=$4 where id_avaliacoes=$5',

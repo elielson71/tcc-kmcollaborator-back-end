@@ -14,6 +14,11 @@ exports.getOneProfissional = async (id_profissional) => {
 }
 
 exports.saveProfissional = async function (profissional) {
+    const existeUsuario = await profissionalData.getUsuarioProfissional(profissional.id_usuario)
+    if(existeUsuario.length!==0)
+        return {status:1,
+            erro:'ja existe profissional com esse usuario'}
+
     const newProfissional = await profissionalData.saveProfissional(profissional);
     newProfissional.senha = undefined
     return newProfissional;
@@ -46,8 +51,8 @@ exports.deletProfissional = async function (id) {
     return profissionalData.deleteProfissional(id)
 };
 
-exports.existeNome = async function ({ login, email,id_profissional}) {
-    const TABELA = await profissionalData.getNomeProfissional(email, login,id_profissional)
+exports.existeNome = async function ({ nome_completo,id_profissional}) {
+    const TABELA = await profissionalData.getNomeProfissional(nome_completo,id_profissional)
     return TABELA.length !== 0
 
 }
