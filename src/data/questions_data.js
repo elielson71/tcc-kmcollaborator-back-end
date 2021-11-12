@@ -19,6 +19,10 @@ exports.putQuestionAnswer = function (id_resposta,answer){
     return database.none('UPDATE respostas SET id_perguntas=$1, descricao=$2, correta=$3 where id_respostas=$4',
     [answer.id_perguntas,answer.descricao,answer.correta,id_resposta])
 }
+exports.putQuestionLinks = function (id_links,links){
+    return database.none('UPDATE links SET id_perguntas=$1, dados=$2, id_midia=$3 where id_links=$4',
+    [links.id_perguntas,links.dados,links.mida,id_links])
+}
  exports.deleteQuestion = async function(id){
     await database.none('DELETE FROM respostas WHERE id_perguntas=$1',[id]);
     return  await database.none('DELETE FROM perguntas WHERE id_perguntas=$1',[id]);

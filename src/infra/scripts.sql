@@ -665,3 +665,35 @@ ALTER TABLE public.midia
 
 ALTER TABLE public.itens_avaliacoes
   DROP COLUMN nota_profissional;
+
+--------------- SQL ---------------
+
+CREATE TABLE public.links (
+  id_links SERIAL NOT NULL,
+  dados VARCHAR,
+  id_midia INTEGER,
+  id_perguntas INTEGER,
+  PRIMARY KEY(id_links)
+) 
+WITH (oids = false);
+--------------- SQL ---------------
+
+ALTER TABLE public.links
+  ADD CONSTRAINT links_fk FOREIGN KEY (id_midia)
+    REFERENCES public.midia(id_midia)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
+    NOT DEFERRABLE;
+    --------------- SQL ---------------
+
+ALTER TABLE public.links
+  ADD CONSTRAINT links_fk1 FOREIGN KEY (id_perguntas)
+    REFERENCES public.perguntas(id_perguntas)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
+    NOT DEFERRABLE;
+
+    --------------- SQL ---------------
+
+ALTER TABLE public.links
+  DROP CONSTRAINT links_fk1 RESTRICT;

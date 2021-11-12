@@ -7,6 +7,17 @@ exports.getAvaliacoes = function(){
 exports.getOneAvaliacoes = function(id_avaliacoes){
     return database.query(`select id_avaliacoes,titulo,tempo,id_departamento from avaliacoes where id_avaliacoes=${id_avaliacoes}`)
 }
+exports.getLinksAvaliacoes = function(id_avaliacoes){
+    return database.query(`SELECT 
+    public.links.dados,
+    public.itens_avaliacoes.id_avaliacoes,
+    public.links.id_midia
+  FROM
+    public.itens_avaliacoes
+    INNER JOIN public.links ON (public.itens_avaliacoes.id_perguntas = public.links.id_perguntas) 
+  where 
+    id_avaliacoes=${id_avaliacoes}`)
+}
 exports.getAvaliacoesItenQuestions = function(id_avaliacoes){
     return database.query(`SELECT 
     public.perguntas.conteudo,

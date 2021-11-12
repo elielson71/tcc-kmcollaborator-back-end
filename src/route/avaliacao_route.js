@@ -15,6 +15,10 @@ router.get('/api/avaliacoes/:id', async function(req,res){
     const avaliacoes = await avaliacoesService.getOneAvaliacoes(req.params.id)
     res.json(avaliacoes)
 })
+router.get('/api/avaliacoes/links/:id', async function(req,res){
+    const avaliacoes = await avaliacoesService.getLinksAvaliacoes(req.params.id)
+    res.json(avaliacoes)
+})
 router.get('/api/avaliacoes/itensquestions/:id', async function(req,res){
     const questions = await avaliacoesService.getAvaliacoesItenQuestions(req.params.id)
     res.json(questions)

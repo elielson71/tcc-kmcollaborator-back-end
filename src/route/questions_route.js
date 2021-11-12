@@ -19,6 +19,10 @@ router.get('/api/questions/answer/:id', async function(req,res){
     const answer = await questionsService.getQuestionAnswer(req.params.id)
     res.json(answer)
 })
+router.get('/api/questions/links/:id', async function(req,res){
+    const links = await questionsService.getQuestionLinks(req.params.id)
+    res.json(links)
+})
 
 router.post('/api/questions', async function(req,res){
     const questions = req.body;
@@ -40,7 +44,7 @@ router.put('/api/questions/:id', async function(req,res){
 })
 router.delete('/api/questions/:id', async function(req,res){
     const respQuestionDelete = await questionsService.deletQuestion(req.params.id)
-    res.json(respQuestionDelete)
+    res.status(204).json(respQuestionDelete)
 })
 router.delete('/api/answer/:id', async function(req,res){
     const respQuestionDelete = await answerService.deletAnswer(req.params.id)

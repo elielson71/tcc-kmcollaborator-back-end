@@ -7,6 +7,7 @@ const uploadFiles = require('../middleware/uploadFiles')
 const router = express.Router();
 router.use(authMiddleware)
 const baseconhecimentoService = require('../service/baseconhecimento_service.js')
+const linksService = require('../service/links_service.js')
 
 router.get('/api/baseconhecimento', async function (req, res) {
     const baseconhecimento = await baseconhecimentoService.getBaseConhecimento();
@@ -55,7 +56,12 @@ router.post('/api/baseconhecimento', async function (req, res) {
     const newBaseConhecimento = await baseconhecimentoService.saveBaseConhecimento(baseconhecimento)
     res.status(201).json(newBaseConhecimento)
 })
+router.post('/api/baseconhecimento/links', async function(req,res){
+    const links = req.body;
+    const newLinks = await linksService.saveLinks(links)
+    res.status(201).json(newLinks)
 
+})
 router.put('/api/baseconhecimento/:id', async function (req, res) {
     const baseconhecimento = req.body;
     if (await baseconhecimentoService.existeBaseConhecimento(baseconhecimento)) {

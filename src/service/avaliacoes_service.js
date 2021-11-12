@@ -11,7 +11,7 @@ exports.getAvaliacoesItenQuestions = async (id_perguntas) => {
     return await avaliacoesData.getAvaliacoesItenQuestions(id_perguntas)
 }
 exports.getAvaliacoesQuestions = async (id_perguntas) => {
-     const resp = {}
+    const resp = {}
     const avaliacao = await avaliacoesData.getOneAvaliacoes(id_perguntas)
     const questions = await avaliacoesData.getAvaliacoesQuestions(id_perguntas)
     resp['avaliacao'] = avaliacao
@@ -19,6 +19,9 @@ exports.getAvaliacoesQuestions = async (id_perguntas) => {
     return resp
 }
 
+exports.getLinksAvaliacoes = async (id_perguntas) => {
+    return await avaliacoesData.getLinksAvaliacoes(id_perguntas)
+}
 
 exports.saveAvaliacoes = async function (avaliacoes) {
     
