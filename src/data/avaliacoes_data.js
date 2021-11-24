@@ -16,7 +16,11 @@ exports.getLinksAvaliacoes = function(id_avaliacoes){
     public.itens_avaliacoes
     INNER JOIN public.links ON (public.itens_avaliacoes.id_perguntas = public.links.id_perguntas) 
   where 
-    id_avaliacoes=${id_avaliacoes}`)
+    id_avaliacoes=${id_avaliacoes}
+    group by
+      public.links.dados,
+      public.itens_avaliacoes.id_avaliacoes,
+      public.links.id_midia`)
 }
 exports.getAvaliacoesItenQuestions = function(id_avaliacoes){
     return database.query(`SELECT 

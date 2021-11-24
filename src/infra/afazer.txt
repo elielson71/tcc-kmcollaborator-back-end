@@ -7,3 +7,8 @@
 [X] Coloca msg no inicio da resposta
 [X] criar 2 relatório
 delete de arquivo no servidor
+[ ] visualizar correção
+[ ] evitar a correção
+[x] importacao de midia no cadastro de questao
+[ ] coloca arquivos no servidor web
+[ ] ajustar erro de cors

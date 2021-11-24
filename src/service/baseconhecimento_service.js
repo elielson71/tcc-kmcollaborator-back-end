@@ -34,7 +34,7 @@ exports.deletBaseConhecimento = async function (id) {
 exports.deleteBaseConhecimentoGrupo = async function (BaseConhecimentoGrupo) {
     return baseconhecimentoData.deleteBaseConhecimentoGrupo(BaseConhecimentoGrupo)
 };
-exports.existeBaseConhecimento = async function ({nome}){
-    const TABELA = await baseconhecimentoData.existeBaseConhecimento(nome)
+exports.existeBaseConhecimento = async function ({originalname}){
+    const TABELA = await baseconhecimentoData.existeBaseConhecimento(originalname)
     return TABELA.length !== 0
 }

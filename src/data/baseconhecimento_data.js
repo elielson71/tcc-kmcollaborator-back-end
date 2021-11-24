@@ -11,6 +11,7 @@ exports.getOneBaseConhecimento = function (id_midia) {
      from midia where id_midia=${id_midia}`)
 }
 exports.existeBaseConhecimento= function (nome) {
+    console.log(nome)
     return database.query(`SELECT 
     id_midia
   FROM
@@ -23,7 +24,7 @@ exports.saveBaseConhecimento = function (baseconhecimento) {
     const data_cadastro = new Date();
     const path = (baseconhecimento.path).substring(11)
     return database.one('INSERT INTO midia ( nome,url,id_responsavel,tipo,data_cadastro) VALUES($1,$2,$3,$4,$5) returning *',
-        [baseconhecimento.originalname, path, 1, baseconhecimento.mimetype, data_cadastro])
+        [baseconhecimento.originalname, path,baseconhecimento.id_resposavel , baseconhecimento.mimetype, data_cadastro])
 }
 
 exports.putBaseConhecimento = function (id, baseconhecimento) {

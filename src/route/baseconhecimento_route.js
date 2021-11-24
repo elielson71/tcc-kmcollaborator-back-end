@@ -26,13 +26,12 @@ router.get('/api/baseconhecimento/:id', async function (req, res) {
     }
 
 })
-
 router.post('/api/baseconhecimento/upload-file', uploadFiles.single('file'), async function (req, res) {
     const file = req.file
     if (file) {
         const newBaseConhecimento = await baseconhecimentoService.saveBaseConhecimento(file)
         if (newBaseConhecimento) {
-            return res.status(200).json({
+            return res.status(201).json({
                 erro: false,
                 mensagem: "Upload realizado com sucesso!"
             });
@@ -53,10 +52,14 @@ router.post('/api/baseconhecimento/upload-file', uploadFiles.single('file'), asy
 })
 router.post('/api/baseconhecimento', async function (req, res) {
     const baseconhecimento = req.body;
-    const newBaseConhecimento = await baseconhecimentoService.saveBaseConhecimento(baseconhecimento)
-    res.status(201).json(newBaseConhecimento)
+    if (await baseconhecimentoService.existeBaseConhecimento(baseconhecimento)) {
+        res.status(404).send("Arquivo já existe!")
+    } else {
+        const newBaseConhecimento = await baseconhecimentoService.saveBaseConhecimento(baseconhecimento)
+        res.status(201).json(newBaseConhecimento)
+    }
 })
-router.post('/api/baseconhecimento/links', async function(req,res){
+router.post('/api/baseconhecimento/links', async function (req, res) {
     const links = req.body;
     const newLinks = await linksService.saveLinks(links)
     res.status(201).json(newLinks)
@@ -90,8 +93,8 @@ router.delete('/api/baseconhecimento/:id', async function (req, res) {
         res.status(400).json(respBaseConhecimentoDelete.mensage)
     }
 })
-router.post('/api/deletebaseconhecimentogrupo/', async function (req, res) {
-    //const respBaseConhecimentoDelete = await baseconhecimentoService.deleteBaseConhecimentoGrupo(req.body)
+router.delete('/api/baseconhecimentopro/:id', async function (req, res) {
+    const respBaseConhecimentoDelete = await baseconhecimentoService.deletBaseConhecimento(req.params.id)
     if (respBaseConhecimentoDelete.status === 1) {
         res.status(204).json(respBaseConhecimentoDelete).end()
     } else {
