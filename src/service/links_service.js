@@ -7,7 +7,7 @@ exports.saveLinks = async function (links) {
         Object.values(links).forEach(async function (value, key) {
             let midias ={}
             midias['dados'] = value.dados
-            midias['id_midia'] = value.id_midia
+            midias['id_midia'] = value.id_midias
             midias['id_perguntas'] = value.id_perguntas
             resp[key] = await linksData.saveLinks(midias)
         })
