@@ -16,10 +16,8 @@ router.get('/api/baseconhecimento', async function (req, res) {
 })
 
 router.get('/api/baseconhecimento/:id', async function (req, res) {
-
     try {
         const baseconhecimento = await baseconhecimentoService.getOneBaseConhecimento(req.params.id)
-
         res.status(200).json(baseconhecimento)
     } catch (e) {
         res.status(404).send(e.message)

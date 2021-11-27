@@ -11,7 +11,6 @@ exports.getOneBaseConhecimento = function (id_midia) {
      from midia where id_midia=${id_midia}`)
 }
 exports.existeBaseConhecimento= function (nome) {
-    console.log(nome)
     return database.query(`SELECT 
     id_midia
   FROM

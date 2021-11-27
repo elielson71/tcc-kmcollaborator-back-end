@@ -5,6 +5,7 @@ const router = express.Router();
 router.use(authMiddleware)
 const questionsService = require('../service/questions_service')
 const answerService = require('../service/answer_service')
+const linksService = require('../service/links_service')
 
 router.get('/api/questions', async function(req,res){
     const questions = await questionsService.getQuestions();
@@ -48,6 +49,10 @@ router.delete('/api/questions/:id', async function(req,res){
 })
 router.delete('/api/answer/:id', async function(req,res){
     const respQuestionDelete = await answerService.deletAnswer(req.params.id)
+    res.status(204).json(respQuestionDelete)
+})
+router.delete('/api/links/:id', async function(req,res){
+    const respQuestionDelete = await linksService.deletLinks(req.params.id)
     res.status(204).json(respQuestionDelete)
 })
 
