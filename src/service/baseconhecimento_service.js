@@ -21,9 +21,6 @@ exports.saveBaseConhecimento = async function (baseconhecimento) {
 }
 
 exports.putBaseConhecimento = async function (id_baseconhecimento, baseconhecimento) {
-    if (baseconhecimento.senha === (await baseconhecimentoData.getOneBaseConhecimento(id_baseconhecimento))[0].senha)
-        delete baseconhecimento.senha
-
     await baseconhecimentoData.putBaseConhecimento(id_baseconhecimento, baseconhecimento);
     return 'ok'
 }

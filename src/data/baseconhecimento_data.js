@@ -27,9 +27,7 @@ exports.saveBaseConhecimento = function (baseconhecimento) {
 }
 
 exports.putBaseConhecimento = function (id, baseconhecimento) {
-    return database.none(`UPDATE midia SET login='${baseconhecimento.login}'
-    ${baseconhecimento.senha ? `,senha='${criptografa(baseconhecimento.senha)}'` : ''},
-    nome_completo='${baseconhecimento.nome_completo}',email='${baseconhecimento.email}',administrador='${baseconhecimento.administrador}' where id_midia=${id}`)
+    return database.none(`UPDATE midia SET nome='${baseconhecimento.originalname}' where id_midia=${id}`)
 }
 
 exports.deleteBaseConhecimento = async function (id) {
